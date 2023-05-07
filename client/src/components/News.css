@@ -1,0 +1,4 @@
+.newsSection{
+    overflow: scroll;
+    overflow-x: hidden;
+}

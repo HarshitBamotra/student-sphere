@@ -1,0 +1,45 @@
+.newsLink{
+    text-decoration: none;
+    color: white;
+}
+.newsElement{
+    width: 100%;
+    border-bottom: 1px solid #3e4144;
+}
+.newsBox{
+    width: 85%;
+    margin: 20px auto 50px auto;
+}
+.newsImage{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.newsHeading{
+    font-size: 24px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 20px;
+}
+.newsDesc{
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 20px;
+    font-weight: light;
+    line-height: 20px;
+    color: rgb(194, 194, 194);
+}
+.newsSomething{
+    display: flex;
+    justify-content: space-between;
+}
+.newsAuthor{
+    font-size: 14px;
+    color: #6e7377;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.newsShare img{
+    width: 16px;
+}

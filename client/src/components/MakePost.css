@@ -1,0 +1,70 @@
+.container{
+    width: 90%;
+    min-height: 300px;
+    background-color: #16181c;
+    border-radius: 20px;
+}
+.box{
+    width: 90%;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 20px;
+}
+.makepost-pic{
+    margin-top: 30px;
+    flex: 0.15;
+    height: 100%;
+}
+.makepost-pic img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.makepost-input{
+    margin-top: 30px;
+    flex: 0.85;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+input[type="text"], textarea {
+    margin-top: 20px;
+    width: 100%;
+    margin-right: 10px;
+    height: 150px;
+    background-color : #16181c; 
+    color: white;
+    font-size: 20px;
+    border: none;
+    resize: none;
+    outline: none;
+    border-bottom: 1px solid #3e4144;
+}
+.image-input{
+    margin-top: 20px;
+    display: flex;
+    gap: 25px;
+}
+.image-upload input{
+    display: none;
+}
+.image-icon{
+    width: 30px;
+}
+.gif-upload{
+    display: flex;
+    align-items: center;
+}
+.gif{
+    width: 35px;
+}
+.emoji-upload{
+    display: flex;
+    justify-content: center;
+}
+.emoji-upload img{
+    width: 27px;
+}

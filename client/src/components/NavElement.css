@@ -1,0 +1,19 @@
+.navElement{
+    color: #6e7377;
+    font-size: 18px;
+    font-family:   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    flex: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+.navElement:hover{
+    background-color: #3e41444f;
+    transition: 0.2s;
+}
+.navElementActive{
+    border-bottom: 3px solid #1d9bf0;
+}

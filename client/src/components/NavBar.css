@@ -1,0 +1,19 @@
+.navBar{
+    display: flex;
+    justify-content: space-evenly;
+    width: auto;
+    /* min-height: 55px; */
+    border-bottom: 1px solid #3e4144;
+    /* margin-bottom: 2px; */
+}
+
+.css-1wf8b0h-MuiTabs-flexContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: space-evenly;
+  }

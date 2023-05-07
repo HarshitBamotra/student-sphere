@@ -1,0 +1,12 @@
+.rightContainer{
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    flex: 0.45; 
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 45%;
+}
