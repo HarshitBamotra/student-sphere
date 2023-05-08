@@ -5,7 +5,7 @@
     height: 100vh;
     display: flex;
     background-image: url("../images/slider-bg-01@2x.jpg");
-    background-color: rgba(0, 0, 0, 0.634);
+    background-color: rgba(0, 0, 0, 0.65);
     background-blend-mode: multiply;
     font-family: 'Poppins',sans-serif;
 }
