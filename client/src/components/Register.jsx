@@ -106,12 +106,11 @@ function Register() {
             </div>
             <div className="register-content">
                 <div className="contentBox">
-                    <h1>Welcome Back</h1>
+                    <h1>Start Your Journey</h1>
                     <div>
                         <div>To stay connected with the community</div>
                         <div>login with your info</div>
                     </div>
-
                 </div>
             </div>
         </div>
