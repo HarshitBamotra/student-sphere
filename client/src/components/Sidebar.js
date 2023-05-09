@@ -28,7 +28,7 @@ export default function Sidebar() {
             var url = "http://localhost:5000/userID";
             const data = await fetch(url);
             var parsedData = await data.json();
-            console.log(parsedData);
+            // console.log(parsedData);
             setId(parsedData.id);
         }
         fetchData();

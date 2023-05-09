@@ -71,13 +71,14 @@ let userDetail = {};
 
 app.post("/login", async function(req, res){
     try{
-        console.log(req.body);
+        //console.log(req.body);
         const user = await Register.findOne({email: req.body.email});
         if(user != null){
             const isMatch = await bcrypt.compare(req.body.password, user.password);
 
             if(isMatch){
                 userDetail = user;
+                //console.log(userDetail);
                 res.json({isCorrect: true});
                 
             } else {
@@ -96,13 +97,13 @@ app.post("/login", async function(req, res){
 
 app.get("/userID",(req,res)=>{
     // res.json({id: userDetail._id});
-    res.json({id:1234});
+    res.json({id:userDetail._id});
 });
 
 app.post("/imageUpload", async function(req, res){
     
     try{
-        console.log(req.body);
+        // console.log(req.body);
         
         if(req.body.imageName){
             
@@ -110,7 +111,7 @@ app.post("/imageUpload", async function(req, res){
                 upload_preset: "project-community-website"
             });
             
-            console.log(uploadRes);
+            // console.log(uploadRes);
 
             if(uploadRes){
                 let timestamp = dateTime.getTimestamp();
@@ -121,7 +122,16 @@ app.post("/imageUpload", async function(req, res){
                     timestamp:  timestamp
                 });
                 
-                const savedTrial = await newTrial.save();
+                const savedPost = await newPost.save();
+                //console.log(savedPost);
+                console.log(newPost);
+                // console.log(userDetail._id);
+                console.log(req.body.postUserId);
+                Register.findOneAndUpdate({_id: req.body.postUserId}, {$push: {posts: newPost}}).then(
+                    () => {
+                        console.log("posts updated");
+                    }
+                );
                 
             }
 

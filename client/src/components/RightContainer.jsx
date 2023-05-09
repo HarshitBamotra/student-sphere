@@ -13,6 +13,7 @@ function RightContainer(){
             var parsedData = await data.json();
             console.log(parsedData);
             setId(parsedData.id);
+            console.log(parsedData.id);
         }
         fetchData();
     },[]);

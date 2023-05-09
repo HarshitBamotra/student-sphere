@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema({
     },
     profileImage: String,
     coverImage: String,
-    bio: String
+    bio: String,
+    posts: [Object]
 
 });
 

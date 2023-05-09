@@ -4,6 +4,8 @@ import testPfp from '../images/Untitled.jpg'
 function Profile(userId) {
     
     console.log(userId);
+
+    
     return (
         // <div className='profile'>
         //     <div className='topBar'>

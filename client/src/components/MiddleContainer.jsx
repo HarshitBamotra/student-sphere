@@ -41,7 +41,7 @@ function MiddleContainer() {
             {result ? <NavBar></NavBar> : <></>}
                 <Routes>
                     <Route path={"/"} element={<Profile userId={id}></Profile>}></Route>
-                    <Route path={"/profile:id"} element={<Profile userId={id}></Profile>}></Route>
+                    <Route path={"/profile/:id"} element={<Profile userId={id}></Profile>}></Route>
                     <Route path="/explore/news" element={<News userId={id}></News>}></Route>
                     <Route path="/explore/forYou" element={<ForYou userId={id}></ForYou>}></Route>
                 </Routes>
