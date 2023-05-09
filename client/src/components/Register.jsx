@@ -4,6 +4,62 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
+    let navigate = useNavigate();
+    const [firstName,setFirstName]=useState("")
+    const [lastName,setLastName]=useState("")
+    const [username,setUsername]=useState("")
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    const [cpassword,setCpassword]=useState("")
+
+    function onChangeFirstName(e){
+        setFirstName(e.target.value);
+    }
+    
+    function onChangeLastName(e){
+        setLastName(e.target.value);
+    }
+    
+    function onChangeUsername(e){
+        setUsername(e.target.value);
+    }
+    
+    function onChangeEmail(e){
+        setEmail(e.target.value);
+    }
+    
+    function onChangePassword(e){
+        setPassword(e.target.value);
+    }
+    
+    function onChangeCpassword(e){
+        setCpassword(e.target.value);
+    }
+    async function onSubmit(e){
+        e.preventDefault();
+        const registerObject = {
+            firstName:firstName,
+            lastName:lastName,
+            username:username,
+            email:email,
+            password:password,
+            cpassword:cpassword
+        }
+        console.log(registerObject);
+        axios.post("http://localhost:5000/register", registerObject)
+            .then((res) => {
+                console.log(res.data)
+                if(res.data.isCorrect===true){
+                    navigate("/login")
+                }
+                else{
+                    navigate("/register")
+                }
+            }).catch((error) => {
+                console.log(error)
+            }
+        );
+    }
     return (
         <div className="RegisterPage">
             <div className="register-form">
