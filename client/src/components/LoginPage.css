@@ -166,12 +166,20 @@
 }
 .contentBox{
     height: 420px;
+    margin-left: 50px;
 }
-.contentBox h1{
-    font-size: 100px;
+/* .contentBox h1{
     margin: 0;
     margin-bottom: 50px;
-}
+} */
 .contentBox div div{
-    font-size: 30px;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.contentBox .heading{
+    font-weight: bold;
+    font-size: 90px;
+    margin: 0;
+    margin-bottom: 50px;
 }

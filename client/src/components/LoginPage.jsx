@@ -14,12 +14,12 @@ function LoginPage(){
         setPassword(e.target.value)
     }
     async function onSubmit(e) {
-        e.preventDefault();
+        e.preventDefault(); 
         const loginObject = {
             email: email,
             password: password
         } 
-
+        
         axios.post("http://localhost:5000/login", loginObject)
             .then((res) => {
                 console.log(res.data)
@@ -39,10 +39,11 @@ function LoginPage(){
         <div className="LoginPage">
             <div className="login-content">
                 <div className="contentBox">
-                    <h1>Welcome Back</h1>
+                    {/* <h1>Welcome Back</h1> */}
+                    <div className="heading">Welcome Back</div>
                     <div>
-                        <div>To stay connected with the community</div>
-                        <div>login with your info</div>
+                        <div>We missed you :( </div>
+                        <div>login and join us for the dinner :D </div>
                     </div>
                     
                 </div>

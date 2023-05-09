@@ -104,28 +104,28 @@ app.post("/imageUpload", async function(req, res){
     try{
         console.log(req.body);
         
-        if(req.body.postImage){
+        // if(req.body.postImage){
             
-            const uploadRes = await cloudinary.uploader.upload(req.body.postImage, {
-                upload_preset: "project-community-website"
-            });
+        //     const uploadRes = await cloudinary.uploader.upload(req.body.postImage, {
+        //         upload_preset: "project-community-website"
+        //     });
             
-            console.log(uploadRes);
+        //     console.log(uploadRes);
 
-            if(uploadRes){
+        //     if(uploadRes){
                 
-                const newPost = new Post({
-                    caption: req.body.caption,
-                    postImage: uploadRes,
-                    postUserId: req.body.postImageUserId,
-                    timestamp: timestamp 
-                });
-                console.log(2);
-                const savedPost = await newPost.save();
-                res.redirect("/imageUpload");
-            }
+        //         const newPost = new Post({
+        //             caption: req.body.caption,
+        //             postImage: uploadRes,
+        //             postUserId: req.body.postImageUserId,
+        //             timestamp: timestamp 
+        //         });
+        //         console.log(2);
+        //         const savedPost = await newPost.save();
+        //         res.redirect("/imageUpload");
+        //     }
 
-        }
+        // }
     } catch(error){
         console.log(error);
     }
