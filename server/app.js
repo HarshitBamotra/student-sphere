@@ -67,6 +67,8 @@ app.post("/register",async function(req,res){
     }
 });
 
+const userDetail = {};
+
 app.post("/login", async function(req, res){
     try{
         console.log(req.body);
@@ -75,7 +77,9 @@ app.post("/login", async function(req, res){
             const isMatch = await bcrypt.compare(req.body.password, user.password);
 
             if(isMatch){
+                userDetail = user;
                 res.json({isCorrect: true});
+                
             } else {
                 //res.send("invalid login details");
                 res.json({isCorrect: false});
@@ -88,7 +92,11 @@ app.post("/login", async function(req, res){
         console.log(error);
         res.json({isCorrect: false});
     }
-    
+});
+
+app.get("/userID",(req,res)=>{
+    // res.json({id: userDetail._id});
+    res.json({id:1234});
 });
 
 app.post("/imageUpload", async function(req, res){

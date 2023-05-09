@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SideBar.css'
 import SidebarOption from './SidebarOption.js'
 import { Button } from "@mui/material";
@@ -18,11 +18,22 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     const [path,setPath] = React.useState("/");
-
+    const [id,setId] = useState("");
     function clickHandle(){
         console.log("Lmao")
     }
-
+    
+    useEffect(()=>{
+        async function fetchData(){
+            var url = "http://localhost:5000/userID";
+            const data = await fetch(url);
+            var parsedData = await data.json();
+            console.log(parsedData);
+            setId(parsedData.id);
+        }
+        fetchData();
+    },[]);
+    
     return (
         <div className="sidebar">
             <StudifyIcon />
@@ -30,7 +41,7 @@ export default function Sidebar() {
                 {/* <SidebarOption Icon={HomeIcon} text="Home" /> */}
                 <SidebarOption path={'/explore/forYou'} Icon={ExploreIcon} text="Explore" onClick={clickHandle}/>
                 <SidebarOption path={'/chat'} active Icon={MarkUnreadChatAltIcon} text="Messages" />
-                <SidebarOption path={'/profile'} Icon={PersonIcon} text="Profile" />
+                <SidebarOption path={'/profile/'+id} Icon={PersonIcon} text="Profile" />
                 <SidebarOption path={'/about'} Icon={InfoIcon} text="About Us" />
                 <SidebarOption path={'/notifications'} Icon={NotificationAddIcon} text="Notifications" />
                 <SidebarOption path={'/settings'} Icon={SettingsIcon} text="Settings" />
