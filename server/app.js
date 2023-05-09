@@ -67,7 +67,7 @@ app.post("/register",async function(req,res){
     }
 });
 
-const userDetail = {};
+let userDetail = {};
 
 app.post("/login", async function(req, res){
     try{

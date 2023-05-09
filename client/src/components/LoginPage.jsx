@@ -24,7 +24,7 @@ function LoginPage(){
             .then((res) => {
                 console.log(res.data)
                 if(res.data.isCorrect===true){
-                    navigate("/landing")
+                    navigate("/explore/forYou");
                 }
                 else{
                     
@@ -74,4 +74,4 @@ function LoginPage(){
     )
 }
 
-export default LoginPage;
+export default LoginPage;

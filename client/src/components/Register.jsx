@@ -92,7 +92,7 @@ function Register() {
                             <i></i>
                         </div>
                         <div className="inputBox">
-                            <input type="password" required></input>
+                            <input type="password" required onChange={onChangeCpassword}></input>
                             <span>Confirm Password</span>
                             <i></i>
                         </div>
@@ -100,7 +100,7 @@ function Register() {
                             <a href="/forgot">Forgot Password</a>
                             <a href="/login">Sign in</a>
                         </div>
-                        <input type="submit" value="login" className="submitButton"></input>
+                        <input type="submit" value="login" className="submitButton" onClick={onSubmit}></input>
                     </form>
                 </div>
             </div>

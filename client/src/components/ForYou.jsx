@@ -2,10 +2,7 @@ import React from 'react';
 import ForYouElement from './ForYouElement';
 import './ForYou.css'
 
-function ForYou(){
-
-
-    
+function ForYou(userId){
     return(
         <div className='forYouSection'>
             <ForYouElement name="Harshit Bamotra"></ForYouElement>

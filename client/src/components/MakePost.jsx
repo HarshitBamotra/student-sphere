@@ -9,7 +9,7 @@ import cross from "../images/cross.svg";
 import xImage from "../images/x.png";
 import axios from 'axios'
 
-function MakePost() {
+function MakePost(userId) {
 
     const [caption, setCaption] = useState("");
     const [postImage, setPostImage] = useState("");
@@ -51,7 +51,8 @@ function MakePost() {
         e.preventDefault();
         const postObject={
             caption:caption,
-            imageName:postImage
+            imageName:postImage,
+            postUserId:userId.id
         }
         axios.post("http://localhost:5000/imageUpload",postObject)
             .then((res)=>{

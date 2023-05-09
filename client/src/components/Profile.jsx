@@ -1,9 +1,9 @@
 import React from 'react';
 import "./Profile.css";
 import testPfp from '../images/Untitled.jpg'
-function Profile() {
+function Profile(userId) {
     
-
+    console.log(userId);
     return (
         // <div className='profile'>
         //     <div className='topBar'>
