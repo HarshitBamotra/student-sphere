@@ -7,6 +7,7 @@ const Post = require("./models/posts");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const validateForm = require(__dirname+"/validate.js")
+const cloudinary = require(__dirname+"/cloudinary.js");
 
 const { log } = require("console");
 
@@ -88,6 +89,38 @@ app.post("/login", async function(req, res){
         res.json({isCorrect: false});
     }
     
+});
+
+app.post("/imageUpload", async function(req, res){
+    
+    try{
+        console.log(req.body);
+        
+        if(req.body.postImage){
+            
+            const uploadRes = await cloudinary.uploader.upload(req.body.postImage, {
+                upload_preset: "project-community-website"
+            });
+            
+            console.log(uploadRes);
+
+            if(uploadRes){
+                
+                const newPost = new Post({
+                    caption: req.body.caption,
+                    postImage: uploadRes,
+                    postUserId: req.body.postImageUserId,
+                    timestamp: timestamp 
+                });
+                console.log(2);
+                const savedPost = await newPost.save();
+                res.redirect("/imageUpload");
+            }
+
+        }
+    } catch(error){
+        console.log(error);
+    }
 });
 
 
