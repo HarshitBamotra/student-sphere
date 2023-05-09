@@ -113,10 +113,12 @@ app.post("/imageUpload", async function(req, res){
             console.log(uploadRes);
 
             if(uploadRes){
-                console.log(1);
-                const newTrial = new Trial({
+                let timestamp = dateTime.getTimestamp();
+                const newPost = new Post({
                     caption: req.body.caption,
-                    imageName: uploadRes  
+                    imageName: uploadRes,
+                    postUserId: req.body.postUserId,
+                    timestamp:  timestamp
                 });
                 
                 const savedTrial = await newTrial.save();
