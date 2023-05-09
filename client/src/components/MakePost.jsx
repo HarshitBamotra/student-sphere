@@ -82,7 +82,7 @@ function MakePost() {
                     </div>
                     <i></i>
                     <div className="image-input">
-                        <div>
+                        <div className="input-types">
                             <div className="image-upload">
                                 <label for="file-input">
                                     <img src={image} alt="" className="image-icon" />
@@ -96,7 +96,7 @@ function MakePost() {
                                 <img src={emoji} alt=""></img>
                             </div>
                         </div>
-                        <div>
+                        <div className="submit-button">
                             <button type="submit" onClick={handleSubmitPost}>Submit</button>
                         </div>
                     </div>
