@@ -16,7 +16,7 @@ function MiddleContainer() {
     //         }
     //         HeaderView();
     // })
-
+    
     const location = useLocation();
     console.log(location);
     let result = location.pathname.includes("explore");
