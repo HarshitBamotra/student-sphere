@@ -4,64 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-    let navigate = useNavigate();
-    const [firstName,setFirstName]=useState("")
-    const [lastName,setLastName]=useState("")
-    const [username,setUsername]=useState("")
-    const [email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
-    const [cpassowrd,setCpassword]=useState("")
-
-    function onChangeFirstName(e){
-        setFirstName(e.target.value);
-    }
-    
-    function onChangeLastName(e){
-        setLastName(e.target.value);
-    }
-    
-    function onChangeUsername(e){
-        setUsername(e.target.value);
-    }
-    
-    function onChangeEmail(e){
-        setEmail(e.target.value);
-    }
-    
-    function onChangePassword(e){
-        setPassword(e.target.value);
-    }
-    
-    function onChangeCpassword(e){
-        setCpassword(e.target.value);
-    }
-    async function onSubmit(e){
-        e.preventDefault();
-        const registerObject={
-            firstName:firstName,
-            lastName:lastName,
-            username:username,
-            email:email,
-            password:password,
-            cpassowrd:cpassowrd
-        }
-        axios.post("http://localhost:5000/register", registerObject)
-            .then((res) => {
-                console.log(res.data)
-                if(res.data.isCorrect===true){
-                    navigate("/landing")
-                }
-                else{
-                    navigate("/register")
-                }
-            }).catch((error) => {
-                console.log(error)
-            }
-        );
-    }
-
-
-
     return (
         <div className="RegisterPage">
             <div className="register-form">
@@ -94,7 +36,7 @@ function Register() {
                             <i></i>
                         </div>
                         <div className="inputBox">
-                            <input type="password" required name="cpassowrd" onChange={onChangeCpassword}></input>
+                            <input type="password" required></input>
                             <span>Confirm Password</span>
                             <i></i>
                         </div>
@@ -102,7 +44,7 @@ function Register() {
                             <a href="/forgot">Forgot Password</a>
                             <a href="/login">Sign in</a>
                         </div>
-                        <input type="submit" value="login" className="submitButton" onClick={onSubmit}></input>
+                        <input type="submit" value="login" className="submitButton"></input>
                     </form>
                 </div>
             </div>
@@ -120,4 +62,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default Register;
