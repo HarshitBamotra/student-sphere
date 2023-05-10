@@ -121,7 +121,7 @@ app.post("/imageUpload", async function(req, res){
                     timestamp:  timestamp
                 });
                 
-                const savedTrial = await newTrial.save();
+                const savedTrial = await newPost.save();
                 
             }
 
