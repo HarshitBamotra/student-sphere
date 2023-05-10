@@ -132,7 +132,7 @@ app.post("/imageUpload", async function(req, res){
                         console.log("posts updated");
                     }
                 );
-                // pata nahi bus push
+                console.log("Sex karo sex");
                 
             }
 
