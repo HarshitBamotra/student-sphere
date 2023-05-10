@@ -29,8 +29,6 @@ function News(){
                 <NewsElement key ={news.url} source={news.url} imgSource={news.urlToImage?news.urlToImage:"https://p4.wallpaperbetter.com/wallpaper/912/429/111/technology-anonymous-hacker-hd-wallpaper-preview.jpg"} heading={news.title?news.title:""} author={news.author?news.author:""} desc={news.description?news.description:""}></NewsElement>
             )
         }
-
-
         // apiKey= "46a0da0c51a76484066f45db62020fbf"
     return(
         <div className='newsSection'>

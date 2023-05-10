@@ -49,33 +49,49 @@ function MakePost(userId) {
         remove.classList.add("displayNone");
     }
 
-    function handleSubmitPost(e){
+    function handleSubmitPost(e) {
         e.preventDefault();
-        const postObject={
-            caption:caption,
-            imageName:postImage,
-            postUserId:id.userId
+        const postObject = {
+            caption: caption,
+            imageName: postImage,
+            postUserId: id.userId
         }
-        axios.post("http://localhost:5000/imageUpload",postObject)
-            .then((res)=>{
-                // console.log(res.data);
-            })
-            .catch((error)=>{
-                console.log(error);
-            })
+        if (!caption && !postImage) {
+            const text = document.getElementById("textArea");
+            text.value = "";
+
+        }
+        else {
+            axios.post("http://localhost:5000/imageUpload", postObject)
+                .then((res) => {
+                    // console.log(res.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+            const file = document.getElementById("file-input");
+            var emptyFile = document.createElement('input');
+            emptyFile.type = 'file';
+            file.files = emptyFile.files;
+            setPostImage("");
+            let remove = document.getElementById("removeImage");
+            remove.classList.add("displayNone");
+            const text = document.getElementById("textArea");
+            text.value = "";
+        }
     }
 
 
 
     return (
-        <div className="container" style={{width:"90%"}}>
+        <div className="container" style={{ width: "90%" }}>
             <div className="box">
                 <div className="makepost-pic">
                     <img src={testPfp} alt=""></img>
                 </div>
                 <div className="makepost-input">
                     <div className="text-input">
-                        <textarea placeholder="What's on your mind?" onChange={onChangeCaption}></textarea>
+                        <textarea placeholder="What's on your mind?" onChange={onChangeCaption} id="textArea"></textarea>
                     </div>
                     <div className="postImagePreview">
                         <img src={postImage} alt=""></img>
