@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap");
+.notifications {
+  font-family: "Londrina Solid", cursive;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  flex: 0.8;
+  display: flex;
+  background: url("../images/bg.png");
+  background-repeat: repeat;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.upar {
+  font-weight: bolder;
+  font-size: 25px;
+}
+.niche {
+  color: #3a3a3a;
+}
+
+.btnsectionhumain {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.combtn {
+  font-family: "Londrina Solid", cursive;
+  border-radius: 30px;
+  padding: 15px;
+  border: 0px;
+  font-weight: bolder;
+}
+.prevwala {
+  background-color: #2e6930;
+}
+.expwala {
+  background-color: #0096ff;
+}

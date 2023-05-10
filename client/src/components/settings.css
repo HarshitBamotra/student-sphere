@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+.settings {
+  background: url("../images/bg.png");
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  flex: 0.8;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.setkardu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.categorywala {
+  font-family: "Lilita One", cursive !important;
+}
+
+.setbtn {
+  position: fixed;
+  right: 10%;
+  bottom: 15%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 0;
+  color: #fff;
+  background-color: #0091ff;
+  cursor: pointer;
+}
+
+.setbtn:hover {
+  background-color: greenyellow !important;
+  color: #000 !important;
+}
+
+.partek1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

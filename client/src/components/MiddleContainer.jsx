@@ -5,7 +5,7 @@ import './MiddleContainer.css';
 import News from "./News";
 import ForYou from "./ForYou";
 import Profile from "./Profile";
-import Explore from "./Explore";
+// import Explore from "./Explore";
 import { useLocation } from 'react-router-dom'
 function MiddleContainer() {
 
@@ -40,8 +40,9 @@ function MiddleContainer() {
             {/* <NavBar></NavBar> */}
             {result ? <NavBar></NavBar> : <></>}
                 <Routes>
-                    <Route path={"/"} element={<Profile userId={id}></Profile>}></Route>
+                    {/* <Route path={"/"} element={<Profile userId={id}></Profile>}></Route> */}
                     <Route path={"/profile/:id"} element={<Profile userId={id}></Profile>}></Route>
+                    <Route path={"/profile/"} element={<Profile userId={id}></Profile>}></Route>
                     <Route path="/explore/news" element={<News userId={id}></News>}></Route>
                     <Route path="/explore/forYou" element={<ForYou userId={id}></ForYou>}></Route>
                 </Routes>

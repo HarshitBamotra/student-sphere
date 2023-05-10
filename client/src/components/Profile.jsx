@@ -58,7 +58,7 @@ function Profile(userId) {
             </div>
             <div className='overflow'>
                 <div className='profile-section'>
-                    <div className='banner'>
+                    <div className='profile-banner'>
                         <div className='profile-pic'>
                             <img src={testPfp} alt=''></img>
                         </div>

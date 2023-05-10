@@ -68,7 +68,7 @@ function MakePost(userId) {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{width:"90%"}}>
             <div className="box">
                 <div className="makepost-pic">
                     <img src={testPfp} alt=""></img>

@@ -64,7 +64,7 @@ function Register() {
         <div className="RegisterPage">
             <div className="register-form">
                 <div className="registerBox">
-                    <form>
+                    <form style={{width:"auto"}}>
                         <h2>Sign up</h2>
                         <div className="inputBox">
                             <input required name="firstName" onChange={onChangeFirstName}></input>

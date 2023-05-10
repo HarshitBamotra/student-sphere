@@ -30,7 +30,7 @@
     color: white;
     height: 91vh;
 }
-.banner{
+.profile-banner{
     background-image: url("../images/twitter banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;

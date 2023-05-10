@@ -66,7 +66,7 @@
         transform: rotate(360deg);
     }
 }
-.loginBox form{
+.loginBox .harshit-form{
     position: absolute;
     inset: 4px;
     background-color: #222222;
@@ -76,18 +76,18 @@
     display: flex;
     flex-direction: column;
 }
-.loginBox form h2{
+.loginBox .harshit-form h2{
     color: white;
     font-weight: 500;
     text-align: center;
     letter-spacing: 0.1em;
 }
-.loginBox form .inputBox{
+.loginBox .harshit-form .inputBox{
     position: relative;
     width: 300px;
     margin-top: 35px;
 }
-.loginBox form .inputBox input{
+.loginBox .harshit-form .inputBox input{
     position: relative;
     width: 100%;
     padding: 20px 10px 10px;
@@ -101,7 +101,7 @@
     z-index: 10;
     border: none;
 }
-.loginBox form .inputBox span{
+.loginBox .harshit-form .inputBox span{
     position: absolute;
     left: 0;
     padding: 20px 10px 10px;
@@ -111,13 +111,13 @@
     letter-spacing: 0.05em;
     transition: 0.5s;
 }
-.loginBox form .inputBox input:valid ~span,
-.loginBox form .inputBox input:focus ~span{
+.loginBox .harshit-form .inputBox input:valid ~span,
+.loginBox .harshit-form .inputBox input:focus ~span{
     color: white;
     font-size: 0.75em;
     transform: translateY(-34px);
 }
-.loginBox form .inputBox i{
+.loginBox .harshit-form .inputBox i{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -129,27 +129,27 @@
     transition: 0.5s;
     pointer-events: none;
 }
-.loginBox form .inputBox input:valid ~i,
-.loginBox form .inputBox input:focus ~i{
+.loginBox .harshit-form .inputBox input:valid ~i,
+.loginBox .harshit-form .inputBox input:focus ~i{
     height: 44px;
 }
 
-.loginBox form .links{
+.loginBox .harshit-form .links{
     display: flex;
     justify-content: space-between;
 }
-.loginBox form .links a{
+.loginBox .harshit-form .links a{
     margin: 10px 0;
     font-size: 0.75em;
     color: #8f8f8f;
     text-decoration: none;
 }
 
-.loginBox form .links a:hover,
-.loginBox form .links a:nth-child(2){
+.loginBox .harshit-form .links a:hover,
+.loginBox .harshit-form .links a:nth-child(2){
     color: white;
 }
-.loginBox form input[type="submit"]{
+.loginBox .harshit-form input[type="submit"]{
     border: none;
     outline: none;
     padding: 9px 25px;
@@ -161,7 +161,7 @@
     width: 100px;
     margin-top: 10px;
 }
-.loginBox form input[type="submit"]:active{
+.loginBox .harshit-form input[type="submit"]:active{
     opacity: 0.8;
 }
 .contentBox{
