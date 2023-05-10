@@ -112,7 +112,7 @@ app.post("/imageUpload", async function(req, res){
             });
             
             // console.log(uploadRes);
-
+            // kuch bhi karo saalo
             if(uploadRes){
                 let timestamp = dateTime.getTimestamp();
                 const newPost = new Post({
