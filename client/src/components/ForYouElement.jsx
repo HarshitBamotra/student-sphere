@@ -23,12 +23,12 @@ function ForYouElement(props) {
                 <div className="post">    {/* display flex column */}
                     <div className="profileName">
                         <div className="name">{props.name}</div>
-                        <div className="time">19h</div>
+                        <div className="time">{props.time}</div>
                     </div>
                     <div className="content">
-                        <div className="contentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                        <div className="contentText">{props.caption}</div>
                         <div className="contentImage">
-                            <img src={testImage3} alt=""></img>
+                            <img src={props.postImage} alt=""></img>
                         </div>
                     </div>
                     <div className="likeAndShare">    {/* display flex */}

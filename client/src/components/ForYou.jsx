@@ -1,70 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ForYouElement from './ForYouElement';
 import './ForYou.css'
 
-function ForYou(userId){
-    
+function ForYou(){
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(()=>{
+        async function fetchPosts(){
+            let url = "http://localhost:5000/posts";
+            let data = await fetch(url);
+            let parsedData = await data.json();
+            console.log(parsedData);
+            setPosts(parsedData.allPosts);
+        }
+        fetchPosts();
+    },[])
+
+    function createPosts(post){
+        return <ForYouElement key = {post._id}name={post._id} postImage={post.imageName.url} time={post.timestamp} caption={post.caption}></ForYouElement>
+    }
+
     return(
         <div className='forYouSection'>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            <ForYouElement name="Harshit Bamotra"></ForYouElement>
-            
+            {posts.map(createPosts)}
         </div>
     )
 }

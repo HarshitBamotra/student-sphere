@@ -23,7 +23,9 @@ function MiddleContainer() {
             var url = "http://localhost:5000/userID";
             const data = await fetch(url);
             var parsedData = await data.json();
-            setId(parsedData.id);
+            console.log(parsedData);
+            setId(parsedData.userDetail._id);
+            console.log(parsedData.userDetail._id);
         }
         fetchData();
     },[]);

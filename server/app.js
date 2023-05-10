@@ -97,7 +97,7 @@ app.post("/login", async function (req, res) {
 
 app.get("/userID", (req, res) => {
     // res.json({id: userDetail._id});
-    res.json({ id: userDetail._id });
+    res.json({ userDetail: userDetail});
 });
 app.post("/imageUpload", async function (req, res) {
     try {
@@ -107,7 +107,8 @@ app.post("/imageUpload", async function (req, res) {
             const newPost = new Post({
                 caption: req.body.caption,
                 postUserId: req.body.postUserId,
-                timestamp: timestamp
+                timestamp: timestamp,
+                imageName: {url:""}
             });
             const savedPost = await newPost.save();
             //console.log(savedPost);
@@ -171,7 +172,15 @@ app.post("/imageUpload", async function (req, res) {
         console.log(error);
     }
 });
-
+app.get("/posts",async (req,res)=>{
+    Post.find().then(
+        (allPosts) => {
+            //console.log(allPost);
+            console.log({allPost: allPosts});
+            res.json({allPosts: allPosts});
+        }
+    )
+})
 
 app.listen(5000, function () {
     console.log("server is running on port 5000");

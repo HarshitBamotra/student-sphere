@@ -10,12 +10,10 @@ import Landing from "./Landing";
 
 function App(){
     const location = useLocation();
-    console.log(location);
     let res1 = location.pathname.includes("login");
     let res2 = location.pathname.includes("register");
     // let res3 = location.pathname === "/";
     let res = res1 || res2;
-    console.log(res);
     return(
         <>
         {/* <SideBar></SideBar> */}

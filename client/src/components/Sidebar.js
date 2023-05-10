@@ -29,7 +29,7 @@ export default function Sidebar() {
             const data = await fetch(url);
             var parsedData = await data.json();
             // console.log(parsedData);
-            setId(parsedData.id);
+            setId(parsedData.userDetail._id);
         }
         fetchData();
     },[]);

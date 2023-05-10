@@ -10,9 +10,7 @@ import xImage from "../images/x.png";
 import axios from 'axios'
 
 function MakePost(userId) {
-    console.log("Make post=> ", userId);
     const id = userId;
-    console.log(id);
     const [caption, setCaption] = useState("");
     const [postImage, setPostImage] = useState("");
 
@@ -31,7 +29,6 @@ function MakePost(userId) {
         if (file) {
             reader.readAsDataURL(file);
             reader.onloadend = () => {
-                console.log(reader.result);
                 setPostImage(reader.result);
             }
         }
