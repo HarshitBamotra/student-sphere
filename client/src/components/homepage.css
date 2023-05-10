@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Cabin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Changa+One&display=swap");
+
+.pricing {
+  scroll-behavior: smooth;
+  flex: 0.8;
+  display: flex;
+  background: url("../images/bg.png");
+  background-repeat: repeat;
+  background-color: #fff;
+  border-left: 1px solid #2a2a2a;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+.banner_wrapper {
+  display: flex;
+  width: 100%;
+  padding: 100px 0 125px;
+  justify-content: center;
+  align-items: center;
+}
+.pricing-header {
+  display: flex;
+  flex-direction: row;
+}
+.banner_wrapper,
+.banner-subtitle {
+  font-size: 24px;
+  /* font-weight: 700; */
+  line-height: 1.5;
+  font-family: "Anton";
+  /* margin-bottom: 15px; */
+  color: #0096ff;
+}
+.banner-subtitle {
+  margin: 0px;
+  padding: 0px;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner-title {
+  font-weight: 800;
+  font-size: 60px;
+  font-family: "Changa One", "Anton";
+  line-height: 1.15;
+  margin-bottom: 25px;
+  color: black;
+}
+.banner-title > span {
+  color: #0096ff;
+}
+.banner-title-text {
+  font-family: "Changa One", "Anton" !important;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+  max-width: 450px;
+  color: #798089;
+}
+.learn-more-btn-section {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 20px;
+}
+.header-img-section > img {
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+.learn-more-btn {
+  background-color: black;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff !important;
+  padding: 12px 29px !important;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+  display: inline-block;
+  text-decoration: none;
+  transition: 0.7s;
+}
+.btn-extra-header {
+  color: gray !important;
+  background-color: transparent;
+  border: 2px solid gray;
+}
+#pricing {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.banner-title-text {
+  font-family: "Cabin";
+}
+.btn-Download {
+  font-family: "Changa One", cursive !important;
+  border-radius: 20px !important;
+  margin: 5px;
+  padding: 10px;
+}
+.btn-Download > a {
+  color: #fff;
+  text-decoration: none;
+}
+.cardwalasection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.featuresofpremium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand_subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 5px;
+  font-family: "Anton", sans-serif;
+  color: #5e5e72;
+}
+.cardwalasection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* justify-self: start; */
+}
+.showcase_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.showcase_card img {
+  /* width: 100%; */
+  /* border-radius: 15px; */
+  padding: 25px;
+  transition: 0.7s;
+}
+.showcase_card img:hover {
+  transform: scale(1.2);
+  position: relative;
+  z-index: 2;
+}
+.pricingplan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plans {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.wrapper {
+  width: 900px;
+  font-family: "Changa One", cursive !important;
+  /* margin: 5% auto; */
+}
+
+.single-price {
+  width: 33%;
+  background-color: #262626;
+  float: left;
+  margin-top: 2%;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: 0.9s;
+}
+.price {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #0096ff;
+  margin: 5% auto 0 auto;
+  text-align: center;
+}
+.deals {
+  margin-top: 10%;
+}
+.single-price > p {
+  font-size: 18px;
+  color: #fff;
+  line-height: 3;
+  text-transform: uppercase;
+}
+.price > h2 {
+  font-size: 38px;
+  color: #fff;
+}
+.deals > h4 {
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+  line-height: 1;
+}
+.single-price:hover {
+  background-color: #0096ff;
+  color: #fff;
+  box-shadow: 0 0 15px rgb(0, 0, 0, 1);
+  transform: scale(1.1);
+  z-index: 1;
+  border-radius: 25px;
+}
+.single-price:hover .price {
+  border-color: #fff;
+}
+
+.single-price a {
+  text-decoration: none;
+  background: #0096ff;
+  color: #fff;
+  padding: 10px 60px;
+  display: inline-block;
+  margin: 10% auto;
+  text-transform: uppercase;
+  /* font-weight: bold; */
+  border-radius: 25px;
+}
+
+.single-price:hover a {
+  background: #262626;
+  color: #fff;
+  border-radius: 25px;
+}

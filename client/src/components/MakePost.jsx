@@ -9,8 +9,10 @@ import cross from "../images/cross.svg";
 import xImage from "../images/x.png";
 import axios from 'axios'
 
-function MakePost() {
-
+function MakePost(userId) {
+    console.log("Make post=> ", userId);
+    const id = userId;
+    console.log(id);
     const [caption, setCaption] = useState("");
     const [postImage, setPostImage] = useState("");
 
@@ -51,11 +53,12 @@ function MakePost() {
         e.preventDefault();
         const postObject={
             caption:caption,
-            imageName:postImage
+            imageName:postImage,
+            postUserId:id.userId
         }
         axios.post("http://localhost:5000/imageUpload",postObject)
             .then((res)=>{
-                console.log(res.data);
+                // console.log(res.data);
             })
             .catch((error)=>{
                 console.log(error);
@@ -65,7 +68,7 @@ function MakePost() {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{width:"90%"}}>
             <div className="box">
                 <div className="makepost-pic">
                     <img src={testPfp} alt=""></img>

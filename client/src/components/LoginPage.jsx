@@ -24,7 +24,7 @@ function LoginPage(){
             .then((res) => {
                 console.log(res.data)
                 if(res.data.isCorrect===true){
-                    navigate("/landing")
+                    navigate("/explore/forYou");
                 }
                 else{
                     
@@ -50,7 +50,7 @@ function LoginPage(){
             </div>
             <div className="login-form">
                 <div className="loginBox">
-                    <form>
+                    <form className="harshit-form" style={{width:"auto"}}>
                         <h2>Sign in</h2>
                         <div className="inputBox">
                             <input type="email" required onChange={onChangeEmail} name="email"></input>
@@ -74,4 +74,4 @@ function LoginPage(){
     )
 }
 
-export default LoginPage;
+export default LoginPage;

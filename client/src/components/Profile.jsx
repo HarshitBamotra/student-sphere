@@ -1,9 +1,11 @@
 import React from 'react';
 import "./Profile.css";
 import testPfp from '../images/Untitled.jpg'
-function Profile() {
+function Profile(userId) {
     
+    console.log(userId);
 
+    
     return (
         // <div className='profile'>
         //     <div className='topBar'>
@@ -56,7 +58,7 @@ function Profile() {
             </div>
             <div className='overflow'>
                 <div className='profile-section'>
-                    <div className='banner'>
+                    <div className='profile-banner'>
                         <div className='profile-pic'>
                             <img src={testPfp} alt=''></img>
                         </div>
