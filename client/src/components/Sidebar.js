@@ -23,46 +23,58 @@ export default function Sidebar() {
         console.log("Lmao")
     }
     
+    const [check, setCheck] = useState(0);
     useEffect(()=>{
         async function fetchData(){
             var url = "http://localhost:5000/userDetail";
             const data = await fetch(url);
             var parsedData = await data.json();
-            // console.log(parsedData);
             setId(parsedData.userDetail._id);
+            console.log(parsedData);
+            if(Object.keys(parsedData.userDetail).length>0){
+                setCheck(-1);
+            }
+            else{
+                setCheck(check +1);
+            }
         }
         fetchData();
-    },[]);
-    
-    return (
-        <div className="sidebar">
-            <StudifyIcon />
-            <div className="sidebarOptions">
-                {/* <SidebarOption Icon={HomeIcon} text="Home" /> */}
-                <SidebarOption path={'/explore/forYou'} Icon={ExploreIcon} text="Explore" onClick={clickHandle}/>
-                <SidebarOption path={'/chat'} active Icon={MarkUnreadChatAltIcon} text="Messages" />
-                <SidebarOption path={'/profile/'+id} Icon={PersonIcon} text="Profile" />
-                <SidebarOption path={'/about'} Icon={InfoIcon} text="About Us" />
-                <SidebarOption path={'/notifications'} Icon={NotificationAddIcon} text="Notifications" />
-                <SidebarOption path={'/settings'} Icon={SettingsIcon} text="Settings" />
-            </div>
-            <div className="sidebarBtns">
-                <Button variant="contained" className="sign_B" endIcon={<LogoutIcon />}>
-                    <Link
-                        style={{ textDecoration: 'none', color: '#000' }}
-                        to='/'>
-                        Sign Out
-                    </Link>
-                </Button>
-                <Button variant="contained" className="prem_B" endIcon={<VerifiedIcon />}>
-                    <Link
-                        style={{ textDecoration: 'none', color: '#000' }}
-                        to='/premium'>
-                        Premium
-                    </Link>
-                </Button>
-            </div>
+    },[check]);
 
-        </div>
-    )
+    if(check===-1){
+        return (
+            <div className="sidebar">
+                <StudifyIcon />
+                <div className="sidebarOptions">
+                    {/* <SidebarOption Icon={HomeIcon} text="Home" /> */}
+                    <SidebarOption path={'/explore/forYou'} Icon={ExploreIcon} text="Explore" onClick={clickHandle}/>
+                    <SidebarOption path={'/chat'} active Icon={MarkUnreadChatAltIcon} text="Messages" />
+                    <SidebarOption path={'/profile/'+id} Icon={PersonIcon} text="Profile" />
+                    <SidebarOption path={'/about'} Icon={InfoIcon} text="About Us" />
+                    <SidebarOption path={'/notifications'} Icon={NotificationAddIcon} text="Notifications" />
+                    <SidebarOption path={'/settings'} Icon={SettingsIcon} text="Settings" />
+                </div>
+                <div className="sidebarBtns">
+                    <Button variant="contained" className="sign_B" endIcon={<LogoutIcon />}>
+                        <Link
+                            style={{ textDecoration: 'none', color: '#000' }}
+                            to='/'>
+                            Sign Out
+                        </Link>
+                    </Button>
+                    <Button variant="contained" className="prem_B" endIcon={<VerifiedIcon />}>
+                        <Link
+                            style={{ textDecoration: 'none', color: '#000' }}
+                            to='/premium'>
+                            Premium
+                        </Link>
+                    </Button>
+                </div>
+    
+            </div>
+        )
+    }
+    else{
+        return <></>
+    }
 }

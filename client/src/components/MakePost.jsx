@@ -10,10 +10,10 @@ import xImage from "../images/x.png";
 import axios from 'axios'
 
 function MakePost(props) {
-    const id = props.userId;
+    // console.log(props.userDetail);
+    const id = props.userDetail._id;
     const [caption, setCaption] = useState("");
     const [postImage, setPostImage] = useState("");
-    console.log(props.userDetail);
 
     function onChangeCaption(event) {
         setCaption(event.target.value);
@@ -78,14 +78,12 @@ function MakePost(props) {
             text.value = "";
         }
     }
-
-
     // props.userDetail.profileImage.url
     return (
         <div className="container1" style={{ width: "90%" }}>
             <div className="box">
                 <div className="makepost-pic">
-                    <img src={testPfp} alt=""></img>
+                    <img src={props.userDetail.profileImage.url} alt=""></img>
                 </div>
                 <div className="makepost-input">
                     <div className="text-input">

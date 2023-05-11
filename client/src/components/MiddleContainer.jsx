@@ -19,6 +19,8 @@ function MiddleContainer() {
     
     const [id,setId] = useState("");
     const [userDetail, setUserDetail] = useState({});
+
+    const [check, setCheck] = useState(0);
     useEffect(()=>{
         async function fetchData(){
             var url = "http://localhost:5000/userDetail";
@@ -26,32 +28,44 @@ function MiddleContainer() {
             var parsedData = await data.json();
             setId(parsedData.userDetail._id);
             setUserDetail(parsedData.userDetail);
+            console.log(parsedData);
+            if(Object.keys(parsedData.userDetail).length>0){
+                setCheck(-1);
+            }
+            else{
+                setCheck(check +1);
+            }
         }
         fetchData();
-    },[]);
+    },[check]);
 
     
 
     const location = useLocation();
     let result = location.pathname.includes("explore");
-
-    return (
-        <div className="middleContainer">
-            {/* <NavBar /> */}
-            {/* <ForYou></ForYou> */}
-            {/* <News></News> */}
-            {/* <Profile></Profile> */}
-            {/* <NavBar></NavBar> */}
-            {result ? <NavBar></NavBar> : <></>}
-                <Routes>
-                    {/* <Route path={"/"} element={<Profile userId={id}></Profile>}></Route> */}
-                    <Route path={"/profile/:id"} element={<Profile userId={id} userDetail={userDetail}></Profile>}></Route>
-                    <Route path={"/profile/"} element={<Profile userId={id} userDetail={userDetail}></Profile>}></Route>
-                    <Route path="/explore/news" element={<News userId={id}></News>}></Route>
-                    <Route path="/explore/forYou" element={<ForYou userId={id}></ForYou>}></Route>
-                </Routes>
-        </div>
-    )
+    if(check===-1){
+        return (
+            <div className="middleContainer">
+                {/* <NavBar /> */}
+                {/* <ForYou></ForYou> */}
+                {/* <News></News> */}
+                {/* <Profile></Profile> */}
+                {/* <NavBar></NavBar> */}
+                {result ? <NavBar></NavBar> : <></>}
+                    <Routes>
+                        {/* <Route path={"/"} element={<Profile userId={id}></Profile>}></Route> */}
+                        <Route path={"/profile/:id"} element={<Profile userId={id} userDetail={userDetail}></Profile>}></Route>
+                        <Route path={"/profile/"} element={<Profile userId={id} userDetail={userDetail}></Profile>}></Route>
+                        <Route path="/explore/news" element={<News userId={id}></News>}></Route>
+                        <Route path="/explore/forYou" element={<ForYou userId={id}></ForYou>}></Route>
+                    </Routes>
+            </div>
+        )
+    }
+    else{
+        return <></>
+    }
+    
 }
 
 export default MiddleContainer;

@@ -7,27 +7,36 @@ function RightContainer(){
     
     const [id,setId] = useState("");
     const [userDetail, setUserDetail] = useState({});
+    
+
+    const [check, setCheck] = useState(0);
     useEffect(()=>{
-        let parsedData ={}
         async function fetchData(){
             var url = "http://localhost:5000/userDetail";
             const data = await fetch(url);
-            parsedData = await data.json();
+            var parsedData = await data.json();
             setId(parsedData.userDetail._id);
             setUserDetail(parsedData.userDetail);
+            console.log(parsedData);
+            if(Object.keys(parsedData.userDetail).length>0){
+                setCheck(-1);
+            }
+            else{
+                setCheck(check +1);
+            }
         }
         fetchData();
-        while(!parsedData.userDetail){
-            fetchData();
-        }
-    },[]);
-
-
-    return(
-        <div className="rightContainer">
-            <MakePost userId={id} userDetail={userDetail}></MakePost>
-        </div>
-    )
+    },[check]);
+    if(check===-1){
+        return(
+            <div className="rightContainer">
+                <MakePost userDetail={userDetail}></MakePost>
+            </div>
+        )
+    }
+    else{
+        return <></>
+    }
 }
 
 export default RightContainer;
