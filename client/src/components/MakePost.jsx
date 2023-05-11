@@ -9,10 +9,11 @@ import cross from "../images/cross.svg";
 import xImage from "../images/x.png";
 import axios from 'axios'
 
-function MakePost(userId) {
-    const id = userId;
+function MakePost(props) {
+    const id = props.userId;
     const [caption, setCaption] = useState("");
     const [postImage, setPostImage] = useState("");
+    console.log(props.userDetail);
 
     function onChangeCaption(event) {
         setCaption(event.target.value);
@@ -79,7 +80,7 @@ function MakePost(userId) {
     }
 
 
-
+    // props.userDetail.profileImage.url
     return (
         <div className="container1" style={{ width: "90%" }}>
             <div className="box">

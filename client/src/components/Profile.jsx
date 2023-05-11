@@ -1,73 +1,34 @@
 import React from 'react';
 import "./Profile.css";
 import testPfp from '../images/Untitled.jpg'
-function Profile(userId) {
+function Profile(props) {
     
-    console.log(userId);
+    console.log(props.userId);
+    console.log(props.userDetail);
 
     
     return (
-        // <div className='profile'>
-        //     <div className='topBar'>
-        //         <div className='back'>
-        //             2---
-        //         </div>
-        //         <div className='name'>
-        //             Harshit Bamotra
-        //         </div>
-        //     </div>
-        //     <div className='profile-overflow'>
-        //         <div className='profile-section'> {/* display flex*/}
-        //             <div className='banner'>
-        //                 <div className='profile-pic'>
-        //                     <img src={testPfp} alt=""></img>
-        //                 </div>
-        //             </div>
-        //             <div className='profile-section-content'> {/*display flex column */}
-        //                 <div className='profile-name'>
-        //                     Harshit Bamotra
-        //                 </div>
-        //                 <div className='username'>
-        //                     @two-little-braincells
-        //                 </div>
-        //                 <div className='date-of-joining'>
-        //                     Joined April 2023
-        //                 </div>
-        //             </div>
-        //         </div>
-        //         <div className='bio-section'>
-        //             <div className='bio'>
-        //                 Something is wrong. I can feel it.<br></br>
-        //                 This world is so fucked up<br></br>
-        //                 everyone is shit<br></br>
-        //             </div>
-        //         </div>
-        //         <div className='Your-Activity'>Your Activity</div>
-        //     </div>
-
-        // </div>
-
         <div className='profile'>
             <div className='topBar'>
                 <div className='back'>
                     2---
                 </div>
                 <div className='name'>
-                    Harshit Bamotra
+                    {props.userDetail.firstName + " " + props.userDetail.lastName}
                 </div>
             </div>
             <div className='overflow'>
                 <div className='profile-section'>
-                    <div className='profile-banner'>
+                    <div className='profile-banner' style={{backgroundImage:`url(${props.userDetail.coverImage.url})`}}>
                         <div className='profile-pic'>
-                            <img src={testPfp} alt=''></img>
+                            <img src={props.userDetail.profileImage.url} alt=''></img>
                         </div>
                     </div>
                     <div className='profile-content'>
                         <div className='profile-text'>
-                            <div className='profile-name'>Harshit Bamotra</div>
-                            <div className='username'>@two-little-braincells</div>
-                            <div className='date-of-joining'>joined April 2023</div>
+                            <div className='profile-name'>{props.userDetail.firstName + " " + props.userDetail.lastName}</div>
+                            <div className='username'>{"@" + props.userDetail.username}</div>
+                            <div className='date-of-joining'>{"joined " + props.userDetail.dateOfJoining}</div>
                         </div>
                         <div className='edit-profile-container'>
                             <div className='edit-profile'>edit profile</div>

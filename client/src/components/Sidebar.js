@@ -25,7 +25,7 @@ export default function Sidebar() {
     
     useEffect(()=>{
         async function fetchData(){
-            var url = "http://localhost:5000/userID";
+            var url = "http://localhost:5000/userDetail";
             const data = await fetch(url);
             var parsedData = await data.json();
             // console.log(parsedData);

@@ -13,11 +13,11 @@ function ForYou() {
             console.log(parsedData);
             setPosts(parsedData.allPosts);
         }
-        setTimeout(()=>{
-            fetchPosts();
-        },5000)
-        // fetchPosts()
-    })
+        // setTimeout(()=>{
+        //     fetchPosts();
+        // },5000)
+        fetchPosts()
+    },[])
 
     function createPosts(post) {
         return <ForYouElement key={post._id} name={post._id} postImage={post.imageName.url} time={post.timestamp} caption={post.caption}></ForYouElement>
