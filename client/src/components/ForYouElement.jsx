@@ -25,7 +25,7 @@ function ForYouElement(props) {
                         <div className="name">{props.name}</div>
                         <div className="time">{props.time}</div>
                     </div>
-                    <div className="content">
+                    <div className="content1">
                         <div className="contentText">{props.caption}</div>
                         <div className="contentImage">
                             <img src={props.postImage} alt=""></img>

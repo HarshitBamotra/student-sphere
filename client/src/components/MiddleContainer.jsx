@@ -30,6 +30,8 @@ function MiddleContainer() {
         fetchData();
     },[]);
 
+    
+
     const location = useLocation();
     let result = location.pathname.includes("explore");
 
