@@ -108,7 +108,8 @@ app.post("/imageUpload", async function (req, res) {
                 caption: req.body.caption,
                 postUsername: req.body.username,
                 postUserProfile: req.body.userProfile,
-                timestamp: timestamp
+                timestamp: timestamp,
+                imageName: {url:""}
             });
             const savedPost = await newPost.save();
             Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).

@@ -18,7 +18,7 @@ function ForYouElement(props) {
         <div className="forYouElement">    {/* display flex */}
             <div className="forYouBox">
                 <div className="pfp">
-                    <img src={testPfp} alt=""></img>
+                    <img src={props.profilePic} alt=""></img>
                 </div>
                 <div className="post">    {/* display flex column */}
                     <div className="profileName">

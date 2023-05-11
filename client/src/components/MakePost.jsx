@@ -52,7 +52,8 @@ function MakePost(props) {
         const postObject = {
             caption: caption,
             imageName: postImage,
-            postUserId: id.userId
+            username: props.userDetail.username,
+            userProfile: props.userDetail.profileImage
         }
         if (!caption && !postImage) {
             const text = document.getElementById("textArea");
