@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Profile.css";
-import testPfp from '../images/Untitled.jpg'
+// import testPfp from '../images/Untitled.jpg'
 function Profile(props) {
     
     console.log(props.userId);
