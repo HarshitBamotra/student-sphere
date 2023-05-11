@@ -28,18 +28,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         immutable: true
     },
-    profileImage: String,
-    coverImage: String,
+    profileImage: Object,
+    coverImage: Object,
     bio: String,
     posts: [Object]
 
 });
 
 userSchema.pre("save", async function(next){
-    // const passwordHah = await bcrypt.hash(password, 10);
     
     this.password = await bcrypt.hash(this.password, 10);
-    //console.log(`the current password is ${this.password}`);
     next();
 });
 

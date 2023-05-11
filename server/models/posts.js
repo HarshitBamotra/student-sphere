@@ -6,7 +6,8 @@ const postSchema = new mongoose.Schema({
         required: true
     },
     imageName: Object,
-    postUserId: String,
+    postUsername: String,
+    postUserProfile: Object,
     timestamp: String,
     comments: [String]
 

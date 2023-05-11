@@ -44,8 +44,8 @@ app.post("/register", async function (req, res) {
                 email: req.body.email,
                 password: req.body.password,
                 dateOfJoining: doj,
-                profileImage: "defaultProfileImage.jpg",
-                coverImage: "defaultCoverImage.png"
+                profileImage: {url: "https://res.cloudinary.com/dx6m1kdeg/image/upload/v1683792822/student%20sphere/Default_pfp.svg_npswwx.png"},
+                coverImage: {url : "https://res.cloudinary.com/dx6m1kdeg/image/upload/v1683792824/student%20sphere/default-cover_nrttcq.png"}
             });
             await newUser.save();
             res.json({ isCorrect: true });
@@ -95,7 +95,7 @@ app.post("/login", async function (req, res) {
     }
 });
 
-app.get("/userID", (req, res) => {
+app.get("/userDetail", (req, res) => {
     // res.json({id: userDetail._id});
     res.json({userDetail: userDetail });
 });
@@ -106,26 +106,22 @@ app.post("/imageUpload", async function (req, res) {
             let timestamp = dateTime.getTimestamp();
             const newPost = new Post({
                 caption: req.body.caption,
-                postUserId: req.body.postUserId,
+                postUsername: req.body.username,
+                postUserProfile: req.body.userProfile,
                 timestamp: timestamp
             });
             const savedPost = await newPost.save();
-            //console.log(savedPost);
-            console.log(newPost);
-            // console.log(userDetail._id);
-            console.log(req.body.postUserId);
-            Register.findOneAndUpdate({ _id: req.body.postUserId }, { $push: { posts: newPost } }).
+            Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).
                 then(
                     () => {
                         console.log("posts updated");
-                    })
+                    }
+                )
         }
         else if (req.body.imageName) {
             const uploadRes = await cloudinary.uploader.upload(req.body.imageName, {
-                upload_preset: "project-community-website"
+                upload_preset: "student-sphere-posts"
             });
-            // console.log(uploadRes);
-            // kuch bhi karo saalo
 
             if (uploadRes) {
                 let timestamp = dateTime.getTimestamp();
@@ -133,15 +129,13 @@ app.post("/imageUpload", async function (req, res) {
                     const newPost = new Post({
                         caption: req.body.caption,
                         imageName: uploadRes,
-                        postUserId: req.body.postUserId,
+                        postUsername: req.body.username,
+                        postUserProfile: req.body.userProfile,
                         timestamp: timestamp
                     });
                     const savedPost = await newPost.save();
-                    //console.log(savedPost);
-                    console.log(newPost);
-                    // console.log(userDetail._id);
-                    console.log(req.body.postUserId);
-                    Register.findOneAndUpdate({ _id: req.body.postUserId }, { $push: { posts: newPost } }).then(
+                    
+                    Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).then(
                         () => {
                             console.log("posts updated");
                         }
@@ -151,15 +145,13 @@ app.post("/imageUpload", async function (req, res) {
                     const newPost = new Post({
                         caption: "",
                         imageName: uploadRes,
-                        postUserId: req.body.postUserId,
+                        postUsername: req.body.username,
+                        postUserProfile: req.body.userProfile,
                         timestamp: timestamp
                     });
                     const savedPost = await newPost.save();
-                    //console.log(savedPost);
-                    console.log(newPost);
-                    // console.log(userDetail._id);
-                    console.log(req.body.postUserId);
-                    Register.findOneAndUpdate({ _id: req.body.postUserId }, { $push: { posts: newPost } }).then(
+                    
+                    Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).then(
                         () => {
                             console.log("posts updated");
                         }
@@ -174,14 +166,97 @@ app.post("/imageUpload", async function (req, res) {
 
 app.get("/posts", async (req, res) => {
     Post.find().then(
-        (allPosts) => {
-            
+        (allPosts) => { 
             res.json({allPosts: allPosts});
         }
     )
 
-})
+});
 
+// adding of comments 
+
+app.post("/comment", async (req, res)=> {
+    try{
+        Post.findOneAndUpdate({_id: req.body.postId}, {$push: {comments: req.body.comment}}).then(
+            () => {
+              console.log("comments are added");
+            }
+        )
+    } catch(error){
+        console.log(error);
+    }
+    
+});
+
+// deleteing a post 
+
+app.post("/deletePost", async (req, res) => {
+    try{
+        Post.findOneAndDelete({_id: req.body.postId}).then(
+            () =>{
+                console.log("post has been deleted ");
+            }
+        )
+    } catch(error){
+        console.log(error);
+    }
+});
+
+// updating profile section
+
+app.post("/updateProfileImage", async (req, res) => {
+
+    try{
+        if(req.body.profileImage){
+            const uploadRes = await cloudinary.uploader.upload(req.body.profileImage, {
+                upload_preset: "student-sphere-profile"
+            });
+            Register.findOneAndUpdate({username: req.body.username}, {profileImage: uploadRes}).then(
+                () => {
+                    console.log("profile image updated");
+                }
+            )
+            
+            // to update profile image for rest of the post of a user
+            await Post.updateMany({postUsername: req.body.username}, {postUserProfile: uploadRes});
+        }
+        
+
+        
+    } catch(error){
+        console.log(error);
+    }
+});
+
+app.post("/updateCover", async (req, res) => {
+    try{
+        if(req.body.coverImage){
+            const uploadRes = await cloudinary.uploader.upload(req.body.coverImage, {
+                upload_preset: "student-sphere-cover"
+            });
+            Register.findOneAndUpdate({username: req.body.username}, {coverImage: uploadRes}).then(
+                () => {
+                    console.log("cover image updated");
+                }
+            )
+            
+        } 
+    } catch(error){
+        console.log(error);
+    }
+});
+
+app.post("/updateBio", async (req, res) => {
+    try{
+        Register.findOneAndUpdate({username: req.body.username}, {bio: req.body.bio}).then(
+            () => {
+                console.log("bio updated");
+            }
+        );
+    } catch(error){
+        console.log(error);
+    }
+});
 
 app.listen(5000, function () {
     console.log("server is running on port 5000");
