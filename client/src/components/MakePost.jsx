@@ -3,15 +3,15 @@ import './MakePost.css';
 import image from "../images/image.svg"
 import gif from "../images/gif.svg"
 import emoji from "../images/emoji.svg"
-import testPfp from '../images/Untitled.jpg'
-import x from "../images/x-mark.png";
-import cross from "../images/cross.svg";
+// import testPfp from '../images/Untitled.jpg'
+// import x from "../images/x-mark.png";
+// import cross from "../images/cross.svg";
 import xImage from "../images/x.png";
 import axios from 'axios'
 
 function MakePost(props) {
     // console.log(props.userDetail);
-    const id = props.userDetail._id;
+    // const id = props.userDetail._id;
     const [caption, setCaption] = useState("");
     const [postImage, setPostImage] = useState("");
 

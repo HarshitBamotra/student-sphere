@@ -1,10 +1,10 @@
 import React from "react";
 import './ForYouElement.css';
 // import pfp from '../images/icons8-user-64.png'
-import testPfp from '../images/Untitled.jpg'
+// import testPfp from '../images/Untitled.jpg'
 // import testImage from '../images/pexels-todd-trapani-1535162.jpg'
 // import testImage2 from '../images/background.jpg'
-import testImage3 from '../images/Screenshot (643).png'
+// import testImage3 from '../images/Screenshot (643).png'
 import like from '../images/like.svg'
 import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
