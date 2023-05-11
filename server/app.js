@@ -4,6 +4,7 @@ const path = require("path");
 const conn = require("./db/conn");
 const Register = require("./models/userRegisters");
 const Post = require("./models/posts");
+const Chat = require("./models/chat");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const validateForm = require(__dirname + "/validate.js")
@@ -220,6 +221,7 @@ app.post("/updateProfileImage", async (req, res) => {
             
             // to update profile image for rest of the post of a user
             await Post.updateMany({postUsername: req.body.username}, {postUserProfile: uploadRes});
+            await Chat.updateMany({username: req.body.username}, {userProfileImage: uploadRes});
         }
         
 
@@ -254,6 +256,22 @@ app.post("/updateBio", async (req, res) => {
                 console.log("bio updated");
             }
         );
+    } catch(error){
+        console.log(error);
+    }
+});
+
+// chatting system
+
+app.post("/chatMessage", async (req, res) => {
+    try{
+        let timestamp = dateTime.getTimestamp();
+        const newMessage = new Chat({
+            userProfileImage: req.body.profileImage,
+            username: req.body.username,
+            message: req.body.message,
+            timestamp: timestamp
+        });
     } catch(error){
         console.log(error);
     }
