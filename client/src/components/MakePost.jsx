@@ -81,14 +81,14 @@ function MakePost(userId) {
 
 
     return (
-        <div className="container" style={{ width: "90%" }}>
+        <div className="container1" style={{ width: "90%" }}>
             <div className="box">
                 <div className="makepost-pic">
                     <img src={testPfp} alt=""></img>
                 </div>
                 <div className="makepost-input">
                     <div className="text-input">
-                        <textarea placeholder="What's on your mind?" onChange={onChangeCaption} id="textArea"></textarea>
+                        <textarea placeholder="What's on your mind?" onChange={onChangeCaption} id="textArea" className="Harshit-text-area"></textarea>
                     </div>
                     <div className="postImagePreview">
                         <img src={postImage} alt=""></img>

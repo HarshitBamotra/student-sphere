@@ -126,7 +126,6 @@ app.post("/imageUpload", async function (req, res) {
                 upload_preset: "project-community-website"
             });
             // console.log(uploadRes);
-            // kuch bhi karo saalo
 
             if (uploadRes) {
                 let timestamp = dateTime.getTimestamp();
@@ -176,7 +175,7 @@ app.get("/posts",async (req,res)=>{
     Post.find().then(
         (allPosts) => {
             //console.log(allPost);
-            console.log({allPost: allPosts});
+            // console.log({allPost: allPosts});
             res.json({allPosts: allPosts});
         }
     )

@@ -50,7 +50,7 @@ function LoginPage(){
             </div>
             <div className="login-form">
                 <div className="loginBox">
-                    <form className="harshit-form" style={{width:"auto"}}>
+                    <form className="harshit-form" style={{width:"auto",height:"auto"}}>
                         <h2>Sign in</h2>
                         <div className="inputBox">
                             <input type="email" required onChange={onChangeEmail} name="email"></input>

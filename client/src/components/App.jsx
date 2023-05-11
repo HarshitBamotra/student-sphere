@@ -12,8 +12,8 @@ function App(){
     const location = useLocation();
     let res1 = location.pathname.includes("login");
     let res2 = location.pathname.includes("register");
-    // let res3 = location.pathname === "/";
-    let res = res1 || res2;
+    let res3 = location.pathname === "/";
+    let res = res1 || res2||res3;
     return(
         <>
         {/* <SideBar></SideBar> */}
@@ -21,7 +21,7 @@ function App(){
                 res ? <Routes>
                 <Route path={"/login"} element={<LoginPage></LoginPage>}></Route>
                 <Route path={"/register"} element={<Register></Register>}></Route>
-                {/* <Route path={"/"} element={<Landing></Landing>}></Route> */}
+                <Route path={"/"} element={<Landing></Landing>}></Route>
             </Routes> :
                 <div className="entire-screen">
                     <Sidebar></Sidebar>

@@ -15,7 +15,7 @@ function News(){
         const [articles, setArticles] = React.useState([]);
         React.useEffect(()=>{
             async function fetchData(){
-                var url = "https://newsapi.org/v2/everything?q=technology&from=2023-04-06&apiKey=72e136201f794007a9a03076a58686ba"
+                var url = "https://newsapi.org/v2/everything?q=technology&from=2023-04-11&apiKey=72e136201f794007a9a03076a58686ba"
                 const data = await fetch(url);
                 var parsedData = await data.json();
                 console.log(parsedData);
