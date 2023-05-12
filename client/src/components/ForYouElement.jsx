@@ -8,11 +8,29 @@ import './ForYouElement.css';
 import like from '../images/like.svg'
 import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function ForYouElement(props) {
+    const navigate = useNavigate();
+    
+    function handleClick(){
+        axios.post("http://localhost:5000/postDetails", props.id)
+            .then((res) => {
+                console.log(res.data)
+                if(res.data.received===true){
+                    navigate("/explore/forYou/"+props.id);
+                }
+                else{
+                    navigate("/explore/forYou");
+                }
+            }).catch((error) => {
+                console.log(error)
+            });
+    }
     return (
         <div className="forYouElement">    {/* display flex */}
-            <div className="forYouBox">
+            <div className="forYouBox" onClick={handleClick}>
                 <div className="pfp">
                     <img src={props.profilePic} alt=""></img>
                 </div>
