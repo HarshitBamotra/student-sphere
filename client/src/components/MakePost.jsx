@@ -58,7 +58,6 @@ function MakePost(props) {
         if (!caption && !postImage) {
             const text = document.getElementById("textArea");
             text.value = "";
-
         }
         else {
             axios.post("http://localhost:5000/imageUpload", postObject)
