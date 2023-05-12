@@ -58,6 +58,7 @@ function MiddleContainer() {
                         <Route path={"/profile/"} element={<Profile userId={id} userDetail={userDetail}></Profile>}></Route>
                         <Route path="/explore/news" element={<News userId={id}></News>}></Route>
                         <Route path="/explore/forYou" element={<ForYou userId={id}></ForYou>}></Route>
+                        <Route path="/explore/" element={<ForYou userId={id}></ForYou>}></Route>
                     </Routes>
             </div>
         )

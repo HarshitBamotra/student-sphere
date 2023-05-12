@@ -10,10 +10,6 @@ import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
 
 function ForYouElement(props) {
-
-    
-
-
     return (
         <div className="forYouElement">    {/* display flex */}
             <div className="forYouBox">

@@ -23,43 +23,69 @@ function Comments(props) {
             setImage(res.imageName.url);
         }).catch((error) => {
             console.log(error);
-    })
-    return (
-        <>
-            <div className="forYouElement">    {/* display flex */}
-                <div className="forYouBox">
-                    <div className="pfp">
-                        <img src={profilePic} alt=""></img>
+        })
+
+    function createComment() {
+        return (
+            <div className="user-comment">
+                <div className="user-comment-box">
+                    <div className="comment-user-pfp">
+                        <img src={props.profilePic} alt=""></img>
                     </div>
-                    <div className="post">    {/* display flex column */}
-                        <div className="profileName">
-                            <div className="name">{name}</div>
-                            <div className="time">{time}</div>
+                    <div className="user-comment-content">    {/* display flex column */}
+                        <div className="comment-user-profileName">
+                            <div className="comment-user-name">{props.name}</div>
+                            <div className="comment-user-time">{props.time}</div>
                         </div>
-                        <div className="content1">
-                            <div className="contentText">{caption}</div>
-                            <div className="contentImage">
-                                <img src={image} alt=""></img>
+                        <div className="comment-user-content1">
+                            <div className="comment-user-contentText">{props.caption}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    return (
+        <div className="comment-section">
+            <div className="user-post">
+                <div className="user-post-box">
+                    <div className="post-user-pfp">
+                        <img src={props.profilePic} alt=""></img>
+                    </div>
+                    <div className="user-post-content">    {/* display flex column */}
+                        <div className="user-profileName">
+                            <div className="user-name">{props.name}</div>
+                            <div className="user-time">{props.time}</div>
+                        </div>
+                        <div className="user-content1">
+                            <div className="user-contentText">{props.caption}</div>
+                            <div className="user-contentImage">
+                                <img src={props.postImage} alt=""></img>
                             </div>
                         </div>
                         <div className="likeAndShare">    {/* display flex */}
-                            <div className="like">
+                            <div className="like-icon">
                                 <img src={like} alt=""></img>
                             </div>
-                            <div className="comment">
+                            <div className="comment-icon">
                                 <img src={comment} alt=""></img>
                             </div>
-                            <div className="share">
+                            <div className="share-icon">
                                 <img src={share} alt=""></img>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div >
+            <div className="comment-input">
+                <div className="comment-box">
+                    <textarea placeholder="write your comment"></textarea>
+                </div>
+            </div>
+            <div className="comments">
 
             </div>
-        </>
+        </div>
     )
 }
 

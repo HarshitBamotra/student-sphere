@@ -22,7 +22,7 @@
   border-radius: 25px;
   margin: 20px;
   margin-top: 2%;
-  margin-bottom: 2%;
+  margin-bottom: 2%;;
   /* background-color: #474b53; */
   background-color: #262626;
 }
@@ -35,6 +35,7 @@
   outline-width: 0;
   color: white;
   font-size: large;
+  outline: none;
 }
 .chat__input > form {
   flex: 1;
