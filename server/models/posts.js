@@ -9,7 +9,7 @@ const postSchema = new mongoose.Schema({
     postUsername: String,
     postUserProfile: Object,
     timestamp: String,
-    comments: [String]
+    comments: [Object]
 
 });
 

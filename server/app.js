@@ -145,7 +145,7 @@ app.post("/imageUpload", async function (req, res) {
                 }
                 else {
                     const newPost = new Post({
-                        caption: "",
+                        caption: " ",
                         imageName: uploadRes,
                         postUsername: req.body.username,
                         postUserProfile: req.body.userProfile,
@@ -175,11 +175,16 @@ app.get("/posts", async (req, res) => {
 
 });
 
-// adding of comments 
+// comments 
 
 app.post("/comment", async (req, res)=> {
     try{
-        Post.findOneAndUpdate({_id: req.body.postId}, {$push: {comments: req.body.comment}}).then(
+        let timestamp = dateTime.getTimestamp();
+        const newComment = {
+            timestamp: timestamp,
+            commentBody: req.body.comment
+        }
+        Post.findOneAndUpdate({_id: req.body.postId}, {$push: {comments: newComment}}).then(
             () => {
               console.log("comments are added");
             }
@@ -188,6 +193,16 @@ app.post("/comment", async (req, res)=> {
         console.log(error);
     }
     
+});
+
+app.post("/postDetails", async (req, res) => {
+    try{
+        const currentPost = await Post.findOne({_id: req.body.postId});
+        res.json(currentPost);
+        
+    } catch(error){
+        console.log(error);
+    }
 });
 
 // deleteing a post 
@@ -261,16 +276,18 @@ app.post("/updateBio", async (req, res) => {
     }
 });
 
+
+
 // chatting system
 
 app.post("/chatMessage", async (req, res) => {
     try{
-        let timestamp = dateTime.getTimestamp();
+        let timestampOfMessage = dateTime.getTimestamp();
         const newMessage = new Chat({
             userProfileImage: req.body.profileImage,
             username: req.body.username,
             message: req.body.message,
-            timestamp: timestamp
+            timestamp: timestampOfMessage
         });
         await newMessage.save();
         res.json(newMessage);
