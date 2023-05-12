@@ -13,15 +13,15 @@ import axios from "axios";
 
 function ForYouElement(props) {
     const navigate = useNavigate();
-    
-    function handleClick(){
-        axios.post("http://localhost:5000/postDetails", props.id)
+
+    function handleClick() {
+        axios.post("http://localhost:5000/getPostId", props.id)
             .then((res) => {
                 console.log(res.data)
-                if(res.data.received===true){
-                    navigate("/explore/forYou/"+props.id);
+                if (res.data.received === true) {
+                    navigate("/explore/forYou/" + props.id);
                 }
-                else{
+                else {
                     navigate("/explore/forYou");
                 }
             }).catch((error) => {

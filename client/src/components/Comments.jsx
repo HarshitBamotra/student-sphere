@@ -45,7 +45,26 @@ function Comments(props) {
     //         console.log(error);
     //     })    
     // },[]);
-    
+
+    const [check, setCheck] = useState(0);
+    useEffect(()=>{
+        async function fetchData(){
+            var url = "http://localhost:5000/postDetails";
+            const data = await fetch(url);
+            var parsedData = await data.json();
+            console.log(parsedData);
+            
+            if(Object.keys(parsedData.userDetail).length>0){
+                setCheck(-1);
+            }
+            else{
+                setCheck(check +1);
+            }
+        }
+        fetchData();
+    },[check]);
+
+
     function createComment() {
         return (
             <div className="user-comment">
