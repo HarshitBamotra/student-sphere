@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import like from '../images/like.svg'
 import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import axios from "axios";
-import testPfp from '../images/Untitled.jpg';
-import postImage from '../images/Screenshot (643).png';
+// import testPfp from '../images/Untitled.jpg';
+// import postImage from '../images/Screenshot (643).png';
 import './Comments.css';
 import image from "../images/image.svg"
 import gif from "../images/gif.svg"
@@ -36,8 +36,6 @@ function Comments(props) {
     const [check, setCheck] = useState(0);
     const [commentBody,setCommentBody] = useState("");
 
-    let {id} = useParams();
-    console.log(id);
     useEffect(() => {
         async function fetchData() {
             var url = "http://localhost:5000/postDetails";
