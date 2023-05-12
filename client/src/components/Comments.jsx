@@ -39,7 +39,7 @@ function Comments(props) {
             console.log(error);
         })
 
-    
+
 
     function createComment() {
         return (

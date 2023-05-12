@@ -12,10 +12,37 @@ function News(){
         
         // var parsedData;
 
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth();
+        let day = date.getDate();
+        month = month+1;
+        if(month===1 && day<5){
+            year=year-1;
+            month=12;
+            day=25;
+        }
+        else if(day<5){
+            month=month-1;
+            day=25;
+        }
+        if(month<10){
+            month = "0"+month;
+        }
+        if(day<10){
+            day="0"+day;
+        }
+        if(day>=5){
+            day = day-5;
+        }
+        console.log(year)
+        console.log(month)
+        console.log(day)
+        console.log(year+"-"+month+"-"+day);
         const [articles, setArticles] = React.useState([]);
         React.useEffect(()=>{
             async function fetchData(){
-                var url = "https://newsapi.org/v2/everything?q=technology&from=2023-05-05&apiKey=72e136201f794007a9a03076a58686ba"
+                var url = `https://newsapi.org/v2/everything?q=technology&from=${year+"-"+month+"-"+day}&apiKey=72e136201f794007a9a03076a58686ba`
                 const data = await fetch(url);
                 var parsedData = await data.json();
                 console.log(parsedData);
