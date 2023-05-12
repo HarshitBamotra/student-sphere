@@ -1,0 +1,200 @@
+.comment-section{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: black;
+    background-blend-mode: multiply;
+    color: white;
+}
+.user-post{
+    width: 100%;
+    border-bottom: 1px solid #3e4144;
+}
+.user-post-box{
+    display: flex;
+    width: 90%;
+    margin: 30px auto 30px 10px;
+}
+.post-user-pfp{
+    flex: 0.1;
+    height: 100%;
+}
+.post-user-pfp img{
+    width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.user-post-content{
+    flex: 0.9;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+.user-profileName{
+    width: 100%;
+    padding-left: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.user-name{
+    color: white;
+    font-size: 18px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+.user-time{
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: gray;
+    font-size: 14px;
+}
+.user-content1{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding-left: 5px;
+    justify-content: space-around;
+    color: rgb(194, 194, 194);
+    margin-bottom: 10px;
+
+}
+.user-contentText{
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 20px;
+    font-weight: light;
+    line-height: 20px;
+}
+.user-contentImage{
+    width: 100%;
+    height: auto;
+}
+.user-contentImage img{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.likeAndShare{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+.like-icon{
+    width: 25%;
+    text-align: center;
+}
+.like-icon img{
+    width: 25px;
+}
+.comment-icon{
+    width: 25%;
+    text-align: center;
+}
+.comment-icon img{
+    width: 25px;
+}
+.share-icon{
+    width: 25%;
+    text-align: center;
+}
+.share-icon img{
+    width: 23px;
+}
+/************************************************************************************/
+
+.comment-input{
+    width: 100%;
+    border-bottom: 1px solid #3e4144;
+    margin-bottom: 30px;
+}
+.comment-box{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.comment-box textarea{
+    color: rgb(194, 194, 194);
+    background-color: black;
+    font-size: 20px;
+    border: none;
+    resize: none;
+    outline: none;
+    width: 100%;
+    min-height: 50px;
+    max-height: 400px;
+}
+
+
+/*****************************************************************************************/
+
+.user-comment{
+    width: 100%;
+    border-bottom: 1px solid #3e4144;
+}
+.user-comment-box{
+    display: flex;
+    width: 90%;
+    margin: 30px auto 30px 10px;
+}
+.comment-user-pfp{
+    flex: 0.1;
+    height: 100%;
+}
+.comment-user-pfp img{
+    width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.user-comment-content{
+    flex: 0.9;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+.comment-user-profileName{
+    width: 100%;
+    padding-left: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.comment-user-name{
+    color: white;
+    font-size: 18px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+.comment-user-time{
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: gray;
+    font-size: 14px;
+}
+.comment-user-content1{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding-left: 5px;
+    justify-content: space-around;
+    color: rgb(194, 194, 194);
+}
+.comment-user-contentText{
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: light;
+    line-height: 20px;
+}

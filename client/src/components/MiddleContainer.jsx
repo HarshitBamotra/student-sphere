@@ -7,6 +7,7 @@ import ForYou from "./ForYou";
 import Profile from "./Profile";
 // import Explore from "./Explore";
 import { useLocation } from 'react-router-dom'
+import Comments from "./Comments";
 function MiddleContainer() {
 
     // useEffect(()=>{
@@ -59,6 +60,7 @@ function MiddleContainer() {
                         <Route path="/explore/news" element={<News userId={id}></News>}></Route>
                         <Route path="/explore/forYou" element={<ForYou userId={id}></ForYou>}></Route>
                         <Route path="/explore/" element={<ForYou userId={id}></ForYou>}></Route>
+                        <Route path="/explore/forYou/:id" element={<Comments></Comments>}></Route>
                     </Routes>
             </div>
         )

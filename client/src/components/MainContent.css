@@ -3,4 +3,5 @@
     flex: 0.80;
     background-color: black;
     display: flex;
+    max-width: 80%;
 }
