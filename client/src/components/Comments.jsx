@@ -53,7 +53,6 @@ function Comments(props) {
             const data = await fetch(url);
             var parsedData = await data.json();
             console.log(parsedData);
-            
             if(Object.keys(parsedData.userDetail).length>0){
                 setCheck(-1);
             }

@@ -18,12 +18,13 @@ function ForYouElement(props) {
         axios.post("http://localhost:5000/getPostId", props.id)
             .then((res) => {
                 console.log(res.data)
-                if (res.data.received === true) {
-                    navigate("/explore/forYou/" + props.id);
-                }
-                else {
-                    navigate("/explore/forYou");
-                }
+                // if (res.data.received === true) {
+                //     navigate("/explore/forYou/" + props.id);
+                // }
+                // else {
+                //     navigate("/explore/forYou");
+                // }
+                    navigate("/explore/forYou/");
             }).catch((error) => {
                 console.log(error)
             });
