@@ -196,7 +196,7 @@ app.post("/comment", async (req, res)=> {
 });
 
 let postDetailId = "";
-app.post("/postDetails", async (req, res) => {
+app.post("/getPostId", async (req, res) => {
     try{
         if(req.body.postId){
             postDetailId = req.body.postId;
@@ -204,13 +204,22 @@ app.post("/postDetails", async (req, res) => {
         } else {
             res.json({recieved: false})
         }
-        //const currentPost = await Post.findOne({_id: req.body.postId});
+        
         res.json(currentPost);
         
     } catch(error){
         console.log(error);
     }
 });
+
+app.get("/postDetails", async (req, res) => {
+    try{
+        const currentPost = await Post.findOne({_id: req.body.postId});
+        res.json(currentPost);
+    } catch(error){
+
+    }
+})
 
 // deleteing a post 
 
