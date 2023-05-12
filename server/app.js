@@ -272,10 +272,24 @@ app.post("/chatMessage", async (req, res) => {
             message: req.body.message,
             timestamp: timestamp
         });
+        await newMessage.save();
+        res.json(newMessage);
     } catch(error){
         console.log(error);
     }
 });
+
+app.get("/allMessage", async (req, res) => {
+    try{
+        Chat.find().then(
+            (allMessages) => {
+                res.json({allMessages: allMessages});
+            }
+        )
+    } catch(error){
+        console.log(error);
+    }
+})
 
 app.listen(5000, function () {
     console.log("server is running on port 5000");

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .settings {
+  font-family: "Passion One", cursive !important;
   background: url("../images/bg.png");
   background-color: #fff;
   width: 100%;
@@ -51,4 +52,561 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.namewala {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.adswalahoonbhai {
+  display: flex;
+  flex-direction: column;
+}
+.adskabhaihoonbhai {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.adskabhaihoonbhai div {
+  font-family: "Lilita One", cursive !important;
+  color: #2a2a2a;
+}
+.btnwalacontainer {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btnhubhai {
+  cursor: pointer;
+  background-color: #000;
+  width: 330px;
+  height: 64px;
+  line-height: 64px;
+  position: absolute;
+  bottom: 12%;
+  right: 6%;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.34);
+}
+.btnhubhai span {
+  color: #fff;
+  display: block;
+  padding-left: 35px;
+  text-transform: uppercase;
+  font: bold 18px/66px Arial;
+  transform: scaleX(0.6);
+  letter-spacing: 3px;
+  transform-origin: center left;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+.btnhubhai em {
+  position: absolute;
+  height: 1px;
+  background: #0096ff;
+  width: 47%;
+  right: 23px;
+  top: 50%;
+  transform: scaleX(0.25);
+  transform-origin: center right;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+.btnhubhai:before,
+.btnhubhai:after {
+  content: "";
+  background: #0096ff;
+  height: 50%;
+  width: 0;
+  position: absolute;
+  transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.btnhubhai:before {
+  top: 0;
+  left: 0;
+  right: auto;
+}
+.btnhubhai:after {
+  bottom: 0;
+  right: 0;
+  left: auto;
+}
+.btnhubhai:hover:before {
+  width: 100%;
+  right: 0;
+  left: auto;
+}
+.btnhubhai:hover:after {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+.btnhubhai:hover span {
+  color: #000;
+}
+.btnhubhai:hover em {
+  background: #000;
+  transform: scaleX(1);
+}
+.audience {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.extensionshubhai {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  align-items: center;
+  justify-content: space-between;
+}
+.portfolio-experiment {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+.portfolio-experiment a {
+  color: #000;
+  padding: 0.7em calc(0.7em * 1.2);
+  display: inline-block;
+  border: 3px solid transparent;
+  position: relative;
+  font-size: 1.5em;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+}
+.portfolio-experiment a .text {
+  font-family: proxima-nova, monospace;
+  transform: translate3d(0, 0.7em, 0);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.portfolio-experiment a:after {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: calc(0.7em * 1.2);
+  right: calc(0.7em * 1.2);
+  height: 3px;
+  background: #0096ff;
+  transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s,
+    right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s,
+    left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
+  transform-origin: left;
+}
+.portfolio-experiment .line {
+  position: absolute;
+  background: #0096ff;
+}
+.portfolio-experiment .line.-right,
+.portfolio-experiment .line.-left {
+  width: 3px;
+  bottom: -3px;
+  top: -3px;
+  transform: scale3d(1, 0, 1);
+}
+.portfolio-experiment .line.-top,
+.portfolio-experiment .line.-bottom {
+  height: 3px;
+  left: -3px;
+  right: -3px;
+  transform: scale3d(0, 1, 1);
+}
+.portfolio-experiment .line.-right {
+  right: -3px;
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
+  transform-origin: top;
+}
+.portfolio-experiment .line.-top {
+  top: -3px;
+  transition: transform 0.08s linear 0.43s;
+  transform-origin: left;
+}
+.portfolio-experiment .line.-left {
+  left: -3px;
+  transition: transform 0.08s linear 0.51s;
+  transform-origin: bottom;
+}
+.portfolio-experiment .line.-bottom {
+  bottom: -3px;
+  transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
+  transform-origin: right;
+}
+.portfolio-experiment a:hover .text,
+.portfolio-experiment a:active .text {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.portfolio-experiment a:hover:after,
+.portfolio-experiment a:active:after {
+  transform: scale3d(0, 1, 1);
+  right: -3px;
+  left: -3px;
+  transform-origin: right;
+  transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s,
+    right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
+}
+.portfolio-experiment a:hover .line,
+.portfolio-experiment a:active .line {
+  transform: scale3d(1, 1, 1);
+}
+.portfolio-experiment a:hover .line.-right,
+.portfolio-experiment a:active .line.-right {
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
+  transform-origin: bottom;
+}
+.portfolio-experiment a:hover .line.-top,
+.portfolio-experiment a:active .line.-top {
+  transition: transform 0.08s linear 0.4s;
+  transform-origin: right;
+}
+.portfolio-experiment a:hover .line.-left,
+.portfolio-experiment a:active .line.-left {
+  transition: transform 0.08s linear 0.48s;
+  transform-origin: top;
+}
+.portfolio-experiment a:hover .line.-bottom,
+.portfolio-experiment a:active .line.-bottom {
+  transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
+  transform-origin: left;
+}
+
+.savehoonbhai {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+:root {
+  --primary-c: #2196f3;
+  --secondary-c: #b2d7f5;
+  --white: #fdfbfb;
+  --text: #082943;
+  --bg: var(--primary-c);
+}
+
+.selectTime {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.selectTime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cardhoonbhai ul {
+  list-style-type: none;
+  padding-left: 50px;
+  margin: 0;
+}
+
+.cardhoonbhai li {
+  display: block;
+  position: relative;
+  padding: 20px 0px;
+}
+
+.cardhoonbhai h2 {
+  margin: 10px 0;
+  font-weight: 900;
+}
+
+/* Cardhoonbhai
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.cardhoonbhai {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  width: 300px;
+  padding: 20px 25px;
+  border-radius: 20px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.13);
+}
+
+/* Radio Button
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.cardhoonbhai input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+.cardhoonbhai label {
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.check {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 50%;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Reset */
+.cardhoonbhai input#one ~ .check {
+  transform: translate(-50px, -25px);
+  background: var(--secondary-c);
+}
+.cardhoonbhai input#two ~ .check {
+  transform: translate(-50px, -83px);
+  background: var(--primary-c);
+  box-shadow: 0 6px 12px rgba(33, 150, 243, 0.35);
+}
+
+/* Radio Input #1 */
+.cardhoonbhai input#one:checked ~ .check {
+  transform: translate(-50px, 33px);
+}
+
+/* Radio Input #2  */
+.cardhoonbhai input#two:checked ~ .check {
+  transform: translate(-50px, -25px);
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.general {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lilita One", "Nunito", sans-serif;
+  color: #000;
+  font-weight: 200!important;
+  user-select: none;
+}
+#form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.general form {
+  width: 90%;
+  max-width: 500px;
+}
+.general form #form-title {
+  margin-top: 0;
+  font-weight: 400;
+  text-align: center;
+}
+.general form #debt-amount-slider {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  user-select: none;
+}
+.general form #debt-amount-slider::before {
+  content: " ";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  width: calc(100% * (4 / 5));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+}
+.general form #debt-amount-slider input,
+.general form #debt-amount-slider label {
+  box-sizing: border-box;
+  flex: 1;
+  user-select: none;
+  cursor: pointer;
+}
+.general form #debt-amount-slider label {
+  display: inline-block;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  user-select: none;
+}
+.general form #debt-amount-slider label::before {
+  content: attr(data-debt-amount);
+  position: absolute;
+  left: 50%;
+  padding-top: 10px;
+  transform: translate(-50%, 45px);
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0.85;
+  transition: all 0.15s ease-in-out;
+}
+.general form #debt-amount-slider label::after {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+.general form #debt-amount-slider label:hover::after {
+  transform: translate(-50%, -50%) scale(1.25);
+}
+.general form #debt-amount-slider input {
+  display: none;
+}
+.general form #debt-amount-slider input:checked + label::before {
+  font-weight: 800;
+  opacity: 1;
+}
+.general form #debt-amount-slider input:checked + label::after {
+  border-width: 4px;
+  transform: translate(-50%, -50%) scale(0.75);
+}
+.general form #debt-amount-slider input:checked ~ #debt-amount-pos {
+  opacity: 1;
+}
+.general
+  form
+  #debt-amount-slider
+  input:checked:nth-child(1)
+  ~ #debt-amount-pos {
+  left: 10%;
+}
+.general
+  form
+  #debt-amount-slider
+  input:checked:nth-child(3)
+  ~ #debt-amount-pos {
+  left: 30%;
+}
+.general
+  form
+  #debt-amount-slider
+  input:checked:nth-child(5)
+  ~ #debt-amount-pos {
+  left: 50%;
+}
+.general
+  form
+  #debt-amount-slider
+  input:checked:nth-child(7)
+  ~ #debt-amount-pos {
+  left: 70%;
+}
+.general
+  form
+  #debt-amount-slider
+  input:checked:nth-child(9)
+  ~ #debt-amount-pos {
+  left: 90%;
+}
+.general form #debt-amount-slider #debt-amount-pos {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+  transition: all 0.15s ease-in-out;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  opacity: 0;
+  z-index: 2;
+}
+.general form:valid #debt-amount-slider input + label::before {
+  transform: translate(-50%, 45px) scale(0.9);
+  transition: all 0.15s linear;
+}
+.general form:valid #debt-amount-slider input:checked + label::before {
+  transform: translate(-50%, 45px) scale(1.1);
+  transition: all 0.15s linear;
+}
+.general form + button {
+  display: block;
+  position: relative;
+  margin: 56px auto 0;
+  padding: 10px 20px;
+  appearance: none;
+  transition: all 0.15s ease-in-out;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  outline: 0;
+  user-select: none;
+  cursor: pointer;
+}
+.general form + button:hover {
+  background: #000;
+  color: #fff;
+}
+.general form + button:hover:active {
+  transform: scale(0.9);
+}
+.general form + button:focus {
+  background: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+  pointer-events: none;
+}
+.general form + button:focus::before {
+  animation: spin 1s linear infinite;
+}
+.general form + button::before {
+  display: inline-block;
+  width: 0;
+  opacity: 0;
+  content: "\f3f4";
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  margin-right: 0;
+  transform: rotate(0deg);
+}
+.general form:invalid + button {
+  pointer-events: none;
+  opacity: 0.25;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+    width: 24px;
+    opacity: 1;
+    margin-right: 12px;
+  }
+  to {
+    transform: rotate(360deg);
+    width: 24px;
+    opacity: 1;
+    margin-right: 12px;
+  }
 }

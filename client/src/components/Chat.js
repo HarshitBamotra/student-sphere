@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ChatHeader from './ChatHeader.js'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import GifIcon from '@mui/icons-material/Gif';
@@ -16,9 +16,14 @@ import PollIcon from '@mui/icons-material/Poll';
 
 
 import './Chat.css'
+import axios from 'axios';
 
 function Chat() {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [message, setMessage] = useState("");
+    const [username, setusername] = useState("");
+    const [profilepic, setprofilepic] = useState("");
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -26,133 +31,132 @@ function Chat() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    return (
-        <div className="chat">
-            <ChatHeader />
-            <div className="chat__messages">
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-            </div>
-            <div className="chat__input">
-                <Tooltip title="Upload">
-                    <AddCircleIcon id="demo-positioned-button"
-                        aria-controls={open ? 'demo-positioned-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick} />
-                </Tooltip>
-                <div className="menu-container">
+    function onChangeMessage(e) {
+        setMessage(e.target.value);
+    }
 
-                    <Menu
-                        id="demo-positioned-menu"
-                        aria-labelledby="demo-positioned-button"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                    >
-                        <MenuItem onClick={handleClose} >
-                            <ArticleIcon color="primary" /> Document</MenuItem>
-                        <MenuItem onClick={handleClose} color="action">
-                            <CameraAltIcon color="primary" /> Picture</MenuItem>
-                        <MenuItem onClick={handleClose} color="action">
-                            <AccountCircleIcon color="primary" /> Contacts</MenuItem>
-                        <MenuItem onClick={handleClose} color="action">
-                            <LocationOnIcon color="primary" /> Location</MenuItem>
-                        <MenuItem onClick={handleClose} color="action">
-                            <PollIcon color="primary" />Poll</MenuItem>
-                    </Menu>
+    const [check, setCheck] = useState(0);
+    React.useEffect(() => {
+        async function fetchData() {
+            var url = "http://localhost:5000/userDetail";
+            const data = await fetch(url);
+            var parsedData = await data.json();
+            setusername(parsedData.userDetail.username);
+            setprofilepic(parsedData.userDetail.profileImage.url);
+            console.log(parsedData);
+            if (Object.keys(parsedData.userDetail).length > 0) {
+                setCheck(-1);
+            }
+            else {
+                setCheck(check + 1);
+            }
+        }
+        fetchData();
+    }, [check]);
+
+    function handleSubmitMessage(e) {
+        e.preventDefault();
+        const messageObject = {
+            message: message,
+            profileImage:profilepic,
+            username:username
+        }
+        axios.post("http://localhost5000/chatMessage", messageObject)
+            .then((res) => {
+
+            }).catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const [messages,setMessages] = useState([]);
+
+    useEffect(()=>{
+        async function fetchMessages(){
+            let url = "http://localhost:5000/allMessage";
+            let data = await fetch(url);
+            let parsedData = await data.json();
+            console.log(parsedData);
+            setMessages(parsedData.allMessages);
+        }
+        fetchMessages();
+    },[])
+    
+    function createMessage(message){
+        return(
+            <Message username={message.username} timestamp={message.timestamp} message={message.message}></Message>
+        )
+    }
+
+    if(check===-1){
+        return (
+            <div className="chat">
+                <ChatHeader />
+                <div className="chat__messages">
+                    {messages.map(createMessage)}
                 </div>
-                <form >
-                    <input placeholder={`Message #TESTCHANNEL`} />
-                    <button className='chat__inputButton' type='submit'> Send Message</button>
-                </form>
-                <div className="chat__inputIcons">
-                    <Tooltip title="SEND">
-                        <SendRoundedIcon />
+                <div className="chat__input">
+                    <Tooltip title="Upload">
+                        <AddCircleIcon id="demo-positioned-button"
+                            aria-controls={open ? 'demo-positioned-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick} />
                     </Tooltip>
-                    <Tooltip title="GIF">
-                        <GifIcon />
-                    </Tooltip>
-                    <Tooltip title="EMOJI">
-                        <EmojiEmotionsIcon />
-                    </Tooltip>
+                    <div className="menu-container">
+    
+                        <Menu
+                            id="demo-positioned-menu"
+                            aria-labelledby="demo-positioned-button"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                        >
+                            <MenuItem onClick={handleClose} >
+                                <ArticleIcon color="primary" /> Document</MenuItem>
+                            <MenuItem onClick={handleClose} color="action">
+                                <CameraAltIcon color="primary" /> Picture</MenuItem>
+                            <MenuItem onClick={handleClose} color="action">
+                                <AccountCircleIcon color="primary" /> Contacts</MenuItem>
+                            <MenuItem onClick={handleClose} color="action">
+                                <LocationOnIcon color="primary" /> Location</MenuItem>
+                            <MenuItem onClick={handleClose} color="action">
+                                <PollIcon color="primary" />Poll</MenuItem>
+                        </Menu>
+                    </div>
+                    <form onSubmit={handleSubmitMessage}>
+                        <input placeholder={`Message #TESTCHANNEL`} onChange={onChangeMessage} />
+                        <button className='chat__inputButton' type='submit' onSubmit={handleSubmitMessage}> Send Message</button>
+                    </form>
+                    <div className="chat__inputIcons">
+                        <Tooltip title="SEND">
+                            <SendRoundedIcon />
+                        </Tooltip>
+                        <Tooltip title="GIF">
+                            <GifIcon />
+                        </Tooltip>
+                        <Tooltip title="EMOJI">
+                            <EmojiEmotionsIcon />
+                        </Tooltip>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    
+    }
+    else{
+        return(
+            <></>
+        )
+    }
 }
 
 export default Chat

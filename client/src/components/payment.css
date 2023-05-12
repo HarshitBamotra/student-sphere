@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+.paymentwala {
+  font-family: "Righteous", cursive;
+  width: 75%;
+  height: 80%;
+  margin: 0 auto;
+  color: #2a2a2a;
+  background-color: #fff;
+  position: relative;
+  top: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.formwala {
+  width: 60%;
+}
+.formwalatop {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.billwala {
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eff4fa;
+}
+.billuparpart {
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  padding-top: 5px;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px dashed #2a2a2a;
+}
+.billcreditcard {
+  background: linear-gradient(to right top, #0096ff, #00528d);
+  color: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  transform: translateY(-60px);
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.chipwala {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.billnichepart {
+  display: flex;
+  flex-direction: column;
+}
+
+.eklineprr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.billdetails {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.humtoinputhai {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  color: #2a2a2a;
+  background-color: #eff4fa;
+}
+.formkadetails {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.notmainheadingform {
+  color: #b2beb5;
+}
+.spacedede {
+  width: 100%;
+}
+.cardNameHolder,
+.cardCVV {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.paymentwala input {
+  font-family: "Russo One", sans-serif;
+}
+.paywalahoonbhai {
+  cursor: pointer;
+  margin-top: 2%;
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 0;
+  color: #fff;
+  background-color: #0096ff;
+}
+.paywalahoonbhai:hover {
+  background-color: blue;
+}
+
+.metotitlehoon {
+  font-size: 30px;
+  font-family: "Anton", sans-serif;
+  color: #0096ff;
+}
+.metotitlehoon > strong {
+  color: #2a2a2a;
+}
+
+.lowerpartcard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cardinputkardo {
+  font-size: 12px;
+}
+.creditcarddekhle {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+#NFC {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.cardEXP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.billcreditcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* .chipwala{
+  margin-top: 20;
+} */
+.meranaambhi {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.humtoinputhai {
+  width: 95%;
+}
+
+.billnichepart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+}
+.eklineprr {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.billnichepart p {
+  padding: 0;
+  margin: 0;
+}
+
+
