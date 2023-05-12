@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import like from '../images/like.svg'
 import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
-// import { useParams } from 'react-router-dom'
-// import axios from "axios";
+import { useParams } from 'react-router-dom'
+import axios from "axios";
 import testPfp from '../images/Untitled.jpg';
 import postImage from '../images/Screenshot (643).png';
 import './Comments.css';
@@ -11,30 +11,35 @@ import image from "../images/image.svg"
 import gif from "../images/gif.svg"
 import emoji from "../images/emoji.svg"
 function Comments(props) {
-
-    function autoGrow() {
-        let text = document.getElementById("comment-text-area");
-        if (text.scrollHeight > text.clientHeight) {
-            text.style.height = text.scrollHeight + "px";
-        }
+    const tx = document.getElementsByTagName("textarea");
+    for (let i = 0; i < tx.length; i++) {
+        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+        tx[i].addEventListener("input", OnInput, false);
     }
-    // let { postId } = useParams();
-    // const [profilePic, setProfilePic] = useState("");
-    // const [name, setName] = useState("");
-    // const [caption, setCaption] = useState("");
-    // const [time, setTime] = useState("");
+
+    function OnInput() {
+        this.style.height = 0;
+        this.style.height = (this.scrollHeight) + "px";
+    }
+    let { postId } = useParams();
+    const [profilePic, setProfilePic] = useState("");
+    const [name, setName] = useState("");
+    const [caption, setCaption] = useState("");
+    const [time, setTime] = useState("");
     // const [image, setImage] = useState("");
 
-    // axios.post("http://localhost5000/postDetails", postId)
-    //     .then((res) => {
-    //         setCaption(res.caption);
-    //         setName(res.username);
-    //         setTime(res.timestamp);
-    //         setProfilePic(res.postUserProfile.url);
-    //         setImage(res.imageName.url);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     })
+    axios.post("http://localhost5000/postDetails", postId)
+        .then((res) => {
+            setCaption(res.caption);
+            setName(res.username);
+            setTime(res.timestamp);
+            setProfilePic(res.postUserProfile.url);
+            // setImage(res.imageName.url);
+        }).catch((error) => {
+            console.log(error);
+        })
+
+    
 
     function createComment() {
         return (
@@ -90,7 +95,7 @@ function Comments(props) {
             </div>
             <div className="comment-input">
                 <div className="comment-box">
-                    <textarea placeholder="write your comment" onKeyUp={autoGrow} id="comment-text-area"></textarea>
+                    <textarea placeholder="write your comment" id="comment-text-area"></textarea>
                     <div className="image-input">
                         <div className="input-types">
                             <div className="image-upload">

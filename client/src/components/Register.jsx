@@ -100,7 +100,7 @@ function Register() {
                             <a href="/forgot">Forgot Password</a>
                             <a href="/login">Sign in</a>
                         </div>
-                        <input type="submit" value="login" className="submitButton" onClick={onSubmit}></input>
+                        <input type="submit" value="Register" className="submitButton" onClick={onSubmit}></input>
                     </form>
                 </div>
             </div>

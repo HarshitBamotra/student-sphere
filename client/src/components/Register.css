@@ -160,7 +160,7 @@
 .registerBox form input[type="submit"]{
     border: none;
     outline: none;
-    padding: 9px 25px;
+    padding: 9px;
     background-color: white;
     cursor: pointer;
     font-size: 0.9em;
