@@ -20,7 +20,7 @@ function ForYou() {
     },[])
 
     function createPosts(post) {
-        return <ForYouElement key={post._id} name={post.postUsername} postImage={post.imageName.url} time={post.timestamp} caption={post.caption} profilePic={post.postUserProfile.url}></ForYouElement>
+        return <ForYouElement key={post._id} name={post.postUsername} postImage={post.imageName.url} time={post.timestamp} caption={post.caption} profilePic={post.postUserProfile.url} id={post._id}></ForYouElement>
     }
 
     return (

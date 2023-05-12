@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import like from '../images/like.svg'
 import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
@@ -21,26 +21,31 @@ function Comments(props) {
         this.style.height = 0;
         this.style.height = (this.scrollHeight) + "px";
     }
-    let { postId } = useParams();
-    const [profilePic, setProfilePic] = useState("");
-    const [name, setName] = useState("");
-    const [caption, setCaption] = useState("");
-    const [time, setTime] = useState("");
-    // const [image, setImage] = useState("");
-
-    axios.post("http://localhost5000/postDetails", postId)
-        .then((res) => {
-            setCaption(res.caption);
-            setName(res.username);
-            setTime(res.timestamp);
-            setProfilePic(res.postUserProfile.url);
-            // setImage(res.imageName.url);
-        }).catch((error) => {
-            console.log(error);
-        })
+    // let { postId } = useParams();
+    // const [profilePic, setProfilePic] = useState({});
+    // const [name, setName] = useState("");
+    // const [caption, setCaption] = useState("");
+    // const [time, setTime] = useState("");
+    // const [postImage, setImage] = useState({});
+    // const [commentsArray, setCommentsArray] = useState([]);
 
 
-
+    
+    // const [check, setCheck] = useState(0);
+    // useEffect(()=>{
+    //     axios.post("http://localhost5000/postDetails", postId)
+    //     .then((res) => {
+    //         setCaption(res.caption);
+    //         setName(res.username);
+    //         setTime(res.timestamp);
+    //         setProfilePic(res.postUserProfile.url);
+    //         setImage(res.imageName.url);
+    //         setCommentsArray(res.comment);
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     })    
+    // },[]);
+    
     function createComment() {
         return (
             <div className="user-comment">
