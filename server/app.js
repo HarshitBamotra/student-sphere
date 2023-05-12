@@ -195,9 +195,16 @@ app.post("/comment", async (req, res)=> {
     
 });
 
+let postDetailId = "";
 app.post("/postDetails", async (req, res) => {
     try{
-        const currentPost = await Post.findOne({_id: req.body.postId});
+        if(req.body.postId){
+            postDetailId = req.body.postId;
+           res.json({recieved: true}); 
+        } else {
+            res.json({recieved: false})
+        }
+        //const currentPost = await Post.findOne({_id: req.body.postId});
         res.json(currentPost);
         
     } catch(error){
