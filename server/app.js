@@ -177,16 +177,34 @@ app.get("/posts", async (req, res) => {
 
 // comments 
 
+
+let postDetailId = "";
+app.post("/getPostId", async (req, res) => {
+    try{
+        // console.log(req.body);
+        if(req.body.id){
+            postDetailId = req.body.id;
+           res.json({recieved: true}); 
+        } else {
+            res.json({recieved: false})
+        }
+    } catch(error){
+        console.log(error);
+    }
+});
 app.post("/comment", async (req, res)=> {
     try{
         let timestamp = dateTime.getTimestamp();
         const newComment = {
             timestamp: timestamp,
-            commentBody: req.body.comment
+            commentBody: req.body.comment,
+            username: req.body.username,
+            pfp: req.body.userProfile
         }
-        Post.findOneAndUpdate({_id: req.body.postId}, {$push: {comments: newComment}}).then(
+        Post.findOneAndUpdate({_id: postDetailId }, {$push: {comments: newComment}}).then(
             () => {
               console.log("comments are added");
+              res.json(newComment);
             }
         )
     } catch(error){
@@ -195,26 +213,10 @@ app.post("/comment", async (req, res)=> {
     
 });
 
-let postDetailId = " ";
-app.post("/getPostId", async (req, res) => {
-    try{
-        if(req.body.postId){
-            postDetailId = req.body.postId;
-           res.json({recieved: true}); 
-        } else {
-            res.json({recieved: false})
-        }
-        
-        
-        
-    } catch(error){
-        console.log(error);
-    }
-});
-
 app.get("/postDetails", async (req, res) => {
     try{
-        const currentPost = await Post.findOne({_id: req.body.postId});
+        const currentPost = await Post.findOne({_id: postDetailId});
+        // console.log(currentPost);
         res.json(currentPost);
     } catch(error){
 

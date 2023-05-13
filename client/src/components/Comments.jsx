@@ -2,18 +2,23 @@ import React, { useEffect, useState } from "react";
 import like from '../images/like.svg'
 import comment from '../images/comment.svg'
 import share from '../images/Share.svg'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import axios from "axios";
-import testPfp from '../images/Untitled.jpg';
-import postImage from '../images/Screenshot (643).png';
+// import testPfp from '../images/Untitled.jpg';
+// import postImage from '../images/Screenshot (643).png';
 import './Comments.css';
 import image from "../images/image.svg"
 import gif from "../images/gif.svg"
 import emoji from "../images/emoji.svg"
+
+
+
+
 function Comments(props) {
     const tx = document.getElementsByTagName("textarea");
     for (let i = 0; i < tx.length; i++) {
-        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+        console.log(i);
+        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight -8) + "px;overflow-y:hidden;");
         tx[i].addEventListener("input", OnInput, false);
     }
 
@@ -21,64 +26,77 @@ function Comments(props) {
         this.style.height = 0;
         this.style.height = (this.scrollHeight) + "px";
     }
-    // let { postId } = useParams();
-    // const [profilePic, setProfilePic] = useState({});
-    // const [name, setName] = useState("");
-    // const [caption, setCaption] = useState("");
-    // const [time, setTime] = useState("");
-    // const [postImage, setImage] = useState({});
-    // const [commentsArray, setCommentsArray] = useState([]);
 
 
-    
-    // const [check, setCheck] = useState(0);
-    // useEffect(()=>{
-    //     axios.post("http://localhost5000/postDetails", postId)
-    //     .then((res) => {
-    //         setCaption(res.caption);
-    //         setName(res.username);
-    //         setTime(res.timestamp);
-    //         setProfilePic(res.postUserProfile.url);
-    //         setImage(res.imageName.url);
-    //         setCommentsArray(res.comment);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     })    
-    // },[]);
-
+    const [profilePic, setProfilePic] = useState("");
+    const [name, setName] = useState("");
+    const [caption, setCaption] = useState("");
+    const [time, setTime] = useState("");
+    const [postImage, setImage] = useState("");
+    const [commentsArray, setCommentsArray] = useState([]);
     const [check, setCheck] = useState(0);
-    useEffect(()=>{
-        async function fetchData(){
+    const [commentBody,setCommentBody] = useState("");
+
+    useEffect(() => {
+        async function fetchData() {
             var url = "http://localhost:5000/postDetails";
             const data = await fetch(url);
             var parsedData = await data.json();
             console.log(parsedData);
-            
-            if(Object.keys(parsedData.userDetail).length>0){
+            setProfilePic(parsedData.postUserProfile.url);
+            setCaption(parsedData.caption);
+            setName(parsedData.postUsername);
+            setImage(parsedData.imageName.url);
+            setTime(parsedData.timestamp);
+            setCommentsArray(parsedData.comments);
+            if (Object.keys(parsedData).length > 0) {
                 setCheck(-1);
             }
-            else{
-                setCheck(check +1);
+            else {
+                setCheck(check + 1);
             }
         }
         fetchData();
-    },[check]);
+    }, [check]);
 
+    function onChangeComment(e){
+        setCommentBody(e.target.value);
+    }
 
-    function createComment() {
+    function handleClick(e) {
+        e.preventDefault();
+        const  commentObject = {
+            comment: commentBody,
+            username: props.userDetail.username,
+            userProfile: props.userDetail.profileImage
+        }
+        if(commentBody.length!==0){
+            axios.post("http://localhost:5000/comment", commentObject)
+            .then((res) => {
+                console.log(res.data);
+                setCommentsArray(commentsArray=>[...commentsArray,res.data]);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            const text = document.getElementById("comment-text-area");
+            text.value = "";
+        }
+    }
+    function createComment(comment) {
         return (
             <div className="user-comment">
                 <div className="user-comment-box">
                     <div className="comment-user-pfp">
-                        <img src={testPfp} alt=""></img>
+                        <img src={comment.pfp.url} alt=""></img>
                     </div>
                     <div className="user-comment-content">    {/* display flex column */}
                         <div className="comment-user-profileName">
-                            <div className="comment-user-name">Nirbhay Singh</div>
-                            <div className="comment-user-time">6:90</div>
+                            <div className="comment-user-name">{comment.username}</div>
+                            <div className="comment-user-time">{comment.timestamp}</div>
                         </div>
                         <div className="comment-user-content1">
-                            <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
+                            <div className="comment-user-contentText">{comment.commentBody}</div>
                         </div>
                     </div>
                 </div>
@@ -90,15 +108,15 @@ function Comments(props) {
             <div className="user-post">
                 <div className="user-post-box">
                     <div className="post-user-pfp">
-                        <img src={testPfp} alt=""></img>
+                        <img src={profilePic} alt=""></img>
                     </div>
                     <div className="user-post-content">    {/* display flex column */}
                         <div className="user-profileName">
-                            <div className="user-name">Harshit Bamotra</div>
-                            <div className="user-time">10:20</div>
+                            <div className="user-name">{name}</div>
+                            <div className="user-time">{time}</div>
                         </div>
                         <div className="user-content1">
-                            <div className="user-contentText">Something is wrong I can feel it. This is going to be a pretty long title</div>
+                            <div className="user-contentText">{caption}</div>
                             <div className="user-contentImage">
                                 <img src={postImage} alt=""></img>
                             </div>
@@ -119,7 +137,7 @@ function Comments(props) {
             </div>
             <div className="comment-input">
                 <div className="comment-box">
-                    <textarea placeholder="write your comment" id="comment-text-area"></textarea>
+                    <textarea placeholder="write your comment" id="comment-text-area" onChange={onChangeComment} style={{height:"58px"}}></textarea>
                     <div className="image-input">
                         <div className="input-types">
                             <div className="image-upload">
@@ -136,237 +154,14 @@ function Comments(props) {
                             </div>
                         </div>
                         <div className="submit-button">
-                            <button type="submit">Submit</button>
+                            <button type="submit" onClick={handleClick}>Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-
-
             <div className="comments">
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-comment">
-                    <div className="user-comment-box">
-                        <div className="comment-user-pfp">
-                            <img src={testPfp} alt=""></img>
-                        </div>
-                        <div className="user-comment-content">    {/* display flex column */}
-                            <div className="comment-user-profileName">
-                                <div className="comment-user-name">Nirbhay Singh</div>
-                                <div className="comment-user-time">6:90</div>
-                            </div>
-                            <div className="comment-user-content1">
-                                <div className="comment-user-contentText">This is a comment. suck it motherfuckers</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {commentsArray.slice(0).reverse().map(createComment)}
             </div>
         </div>
     )
