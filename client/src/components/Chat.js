@@ -29,15 +29,10 @@ function Chat() {
     };
 
 
-
-
-
-
     const [message, setMessage] = useState("");
     const [username, setusername] = useState("");
     const [profilepic, setprofilepic] = useState("");
-    const [messages,setMessages] = useState([]);
-
+    const [messages, setMessages] = useState([]);
 
     function onChangeMessage(e) {
         setMessage(e.target.value);
@@ -60,48 +55,58 @@ function Chat() {
         }
         fetchData();
     }, [check]);
-    
+
     function handleSubmitMessage(e) {
         e.preventDefault();
         const messageObject = {
             message: message,
-            profileImage:profilepic,
-            username:username
+            profileImage: profilepic,
+            username: username
         }
-        if(message.length!==0){
+        if (message.length !== 0) {
             axios.post("http://localhost:5000/chatMessage", messageObject)
-            .then((res) => {
-                setMessages(messages=>[...messages,res.data]);
-            }).catch((error) => {
-                console.log(error);
-            })
+                .then((res) => {
+                    setMessages(messages => [...messages, res.data]);
+                }).catch((error) => {
+                    console.log(error);
+                })
             const text = document.getElementById('chat-input-textarea');
-            text.value ="";
+            text.value = "";
         }
     }
-    useEffect(()=>{
-        async function fetchMessages(){
+    useEffect(() => {
+        async function fetchMessages() {
             let url = "http://localhost:5000/allMessage";
             let data = await fetch(url);
             let parsedData = await data.json();
             setMessages(parsedData.allMessages);
         }
         fetchMessages();
-    },[])
-    
-    function createMessage(message){
-        return(
+    }, [messages])
+
+    const messagesEndRef = React.useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages]);
+
+    function createMessage(message) {
+        return (
             <Message username={message.username} timestamp={message.timestamp} message={message.message} pfp={message.userProfileImage}></Message>
         )
     }
 
-    if(check===-1){
+    if (check === -1) {
         return (
             <div className="chat">
                 <ChatHeader />
-                <div className="chat__messages">
+                <div className="chat__messages" >
                     {messages.map(createMessage)}
-                    
+
                 </div>
                 <div className="chat__input">
                     <Tooltip title="Upload">
@@ -112,7 +117,7 @@ function Chat() {
                             onClick={handleClick} />
                     </Tooltip>
                     <div className="menu-container">
-    
+
                         <Menu
                             id="demo-positioned-menu"
                             aria-labelledby="demo-positioned-button"
@@ -141,7 +146,7 @@ function Chat() {
                         </Menu>
                     </div>
                     <form onSubmit={handleSubmitMessage}>
-                        <input placeholder={`Message #TESTCHANNEL`} onChange={onChangeMessage} id='chat-input-textarea'/>
+                        <input placeholder={`Message #TESTCHANNEL`} onChange={onChangeMessage} id='chat-input-textarea' />
                         <button className='chat__inputButton' type='submit'> Send Message</button>
                     </form>
                     <div className="chat__inputIcons">
@@ -158,10 +163,10 @@ function Chat() {
                 </div>
             </div>
         )
-    
+
     }
-    else{
-        return(
+    else {
+        return (
             <></>
         )
     }
