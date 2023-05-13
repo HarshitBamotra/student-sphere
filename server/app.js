@@ -298,15 +298,34 @@ app.post("/updateBio", async (req, res) => {
 
 // chatting system
 
-app.post("/chatMessage", async (req, res) => {
+// app.post("/chatMessage", async (req, res) => {
+//     try{
+//         let timestampOfMessage = dateTime.getTimestamp();
+//         const newMessage = new Chat({
+//             userProfileImage: req.body.profileImage,
+//             username: req.body.username,
+//             message: req.body.message,
+//             timestamp: timestampOfMessage
+//         });
+//         await newMessage.save();
+//         res.json(newMessage);
+//     } catch(error){
+//         console.log(error);
+//     }
+// });
+
+
+app.post("/chatMessage", async (req, res)=> {
     try{
-        let timestampOfMessage = dateTime.getTimestamp();
-        const newMessage = new Chat({
-            userProfileImage: req.body.profileImage,
-            username: req.body.username,
+        let timestamp = dateTime.getTimestamp();
+        const newMessage = new Chat(
+            {
+            timestamp: timestamp,
             message: req.body.message,
-            timestamp: timestampOfMessage
-        });
+            username: req.body.username,
+            userProfileImage: req.body.profileImage
+            }
+        )
         await newMessage.save();
         res.json(newMessage);
     } catch(error){

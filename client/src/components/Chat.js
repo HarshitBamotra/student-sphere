@@ -20,10 +20,6 @@ import axios from 'axios';
 
 function Chat() {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [message, setMessage] = useState("");
-    const [username, setusername] = useState("");
-    const [profilepic, setprofilepic] = useState("");
-
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -31,6 +27,18 @@ function Chat() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+
+
+
+
+
+    const [message, setMessage] = useState("");
+    const [username, setusername] = useState("");
+    const [profilepic, setprofilepic] = useState("");
+    const [messages,setMessages] = useState([]);
+
+
     function onChangeMessage(e) {
         setMessage(e.target.value);
     }
@@ -42,8 +50,7 @@ function Chat() {
             const data = await fetch(url);
             var parsedData = await data.json();
             setusername(parsedData.userDetail.username);
-            setprofilepic(parsedData.userDetail.profileImage.url);
-            console.log(parsedData);
+            setprofilepic(parsedData.userDetail.profileImage);
             if (Object.keys(parsedData.userDetail).length > 0) {
                 setCheck(-1);
             }
@@ -53,7 +60,7 @@ function Chat() {
         }
         fetchData();
     }, [check]);
-
+    
     function handleSubmitMessage(e) {
         e.preventDefault();
         const messageObject = {
@@ -61,22 +68,22 @@ function Chat() {
             profileImage:profilepic,
             username:username
         }
-        axios.post("http://localhost5000/chatMessage", messageObject)
+        if(message.length!==0){
+            axios.post("http://localhost:5000/chatMessage", messageObject)
             .then((res) => {
-
+                setMessages(messages=>[...messages,res.data]);
             }).catch((error) => {
                 console.log(error);
             })
+            const text = document.getElementById('chat-input-textarea');
+            text.value ="";
+        }
     }
-
-    const [messages,setMessages] = useState([]);
-
     useEffect(()=>{
         async function fetchMessages(){
             let url = "http://localhost:5000/allMessage";
             let data = await fetch(url);
             let parsedData = await data.json();
-            console.log(parsedData);
             setMessages(parsedData.allMessages);
         }
         fetchMessages();
@@ -84,7 +91,7 @@ function Chat() {
     
     function createMessage(message){
         return(
-            <Message username={message.username} timestamp={message.timestamp} message={message.message}></Message>
+            <Message username={message.username} timestamp={message.timestamp} message={message.message} pfp={message.userProfileImage}></Message>
         )
     }
 
@@ -94,6 +101,7 @@ function Chat() {
                 <ChatHeader />
                 <div className="chat__messages">
                     {messages.map(createMessage)}
+                    
                 </div>
                 <div className="chat__input">
                     <Tooltip title="Upload">
@@ -133,8 +141,8 @@ function Chat() {
                         </Menu>
                     </div>
                     <form onSubmit={handleSubmitMessage}>
-                        <input placeholder={`Message #TESTCHANNEL`} onChange={onChangeMessage} />
-                        <button className='chat__inputButton' type='submit' onSubmit={handleSubmitMessage}> Send Message</button>
+                        <input placeholder={`Message #TESTCHANNEL`} onChange={onChangeMessage} id='chat-input-textarea'/>
+                        <button className='chat__inputButton' type='submit'> Send Message</button>
                     </form>
                     <div className="chat__inputIcons">
                         <Tooltip title="SEND">

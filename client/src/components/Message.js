@@ -3,11 +3,9 @@ import React from 'react'
 import './Message.css'
 
 export default function Message(props) {
-
-    
     return (
         <div className="message">
-            <Avatar />
+            <Avatar src={props.pfp.url}/>
             <div className="message__info">
                 <h4>
                     {props.username}
