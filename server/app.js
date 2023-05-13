@@ -195,7 +195,7 @@ app.post("/comment", async (req, res)=> {
     
 });
 
-let postDetailId = "";
+let postDetailId = " ";
 app.post("/getPostId", async (req, res) => {
     try{
         if(req.body.postId){
@@ -205,7 +205,7 @@ app.post("/getPostId", async (req, res) => {
             res.json({recieved: false})
         }
         
-        res.json(currentPost);
+        
         
     } catch(error){
         console.log(error);
