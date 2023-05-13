@@ -74,6 +74,19 @@ function Chat() {
             text.value = "";
         }
     }
+
+
+    const messagesEndRef = React.useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(()=>{
+        scrollToBottom();
+    },[messages]);
+
+
     useEffect(() => {
         async function fetchMessages() {
             let url = "http://localhost:5000/allMessage";
@@ -82,17 +95,8 @@ function Chat() {
             setMessages(parsedData.allMessages);
         }
         fetchMessages();
-    }, [messages])
+    }, [])
 
-    const messagesEndRef = React.useRef(null)
-
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }
-
-    useEffect(() => {
-        scrollToBottom()
-    }, [messages]);
 
     function createMessage(message) {
         return (
@@ -106,7 +110,7 @@ function Chat() {
                 <ChatHeader />
                 <div className="chat__messages" >
                     {messages.map(createMessage)}
-
+                    <div ref={messagesEndRef}></div>
                 </div>
                 <div className="chat__input">
                     <Tooltip title="Upload">
