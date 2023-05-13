@@ -15,7 +15,6 @@ import NotFound from './NotFound';
 
 
 function MainContent(){
-
     const location = useLocation();
     let res1 = location.pathname.includes("/chat")
     let res2 = location.pathname.includes("/about")
