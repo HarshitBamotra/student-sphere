@@ -19,7 +19,6 @@ function LoginPage(){
             email: email,
             password: password
         } 
-        
         axios.post("http://localhost:5000/login", loginObject)
             .then((res) => {
                 console.log(res.data)
@@ -27,7 +26,6 @@ function LoginPage(){
                     navigate("/explore/forYou");
                 }
                 else{
-                    
                     navigate("/login")
                 }
 

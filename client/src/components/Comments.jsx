@@ -17,7 +17,8 @@ import emoji from "../images/emoji.svg"
 function Comments(props) {
     const tx = document.getElementsByTagName("textarea");
     for (let i = 0; i < tx.length; i++) {
-        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+        console.log(i);
+        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight -8) + "px;overflow-y:hidden;");
         tx[i].addEventListener("input", OnInput, false);
     }
 
@@ -72,7 +73,8 @@ function Comments(props) {
         if(commentBody.length!==0){
             axios.post("http://localhost:5000/comment", commentObject)
             .then((res) => {
-                // console.log(res.data);
+                console.log(res.data);
+                setCommentsArray(commentsArray=>[...commentsArray,res.data]);
             })
             .catch((error) => {
                 console.log(error);
@@ -135,7 +137,7 @@ function Comments(props) {
             </div>
             <div className="comment-input">
                 <div className="comment-box">
-                    <textarea placeholder="write your comment" id="comment-text-area" onChange={onChangeComment}></textarea>
+                    <textarea placeholder="write your comment" id="comment-text-area" onChange={onChangeComment} style={{height:"58px"}}></textarea>
                     <div className="image-input">
                         <div className="input-types">
                             <div className="image-upload">

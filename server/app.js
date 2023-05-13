@@ -204,6 +204,7 @@ app.post("/comment", async (req, res)=> {
         Post.findOneAndUpdate({_id: postDetailId }, {$push: {comments: newComment}}).then(
             () => {
               console.log("comments are added");
+              res.json(newComment);
             }
         )
     } catch(error){
