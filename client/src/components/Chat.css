@@ -1,5 +1,5 @@
 .chat {
-  flex: auto;
+  flex: 0.75;
   display: flex;
   flex-direction: column;
   /* background-color: #363a3f; */
@@ -36,6 +36,7 @@
   color: white;
   font-size: large;
   outline: none;
+  white-space: pre;
 }
 .chat__input > form {
   flex: 1;
