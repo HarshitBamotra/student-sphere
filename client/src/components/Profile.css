@@ -1,4 +1,5 @@
 .profile{
+    position: relative;
     color:white;
     display: flex;
     font-family:   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -95,4 +96,255 @@
 }
 .your-activity-text:hover{
     background-color: #3e41444f;
+}
+
+.edit-profile-popup-container{
+    display: none;
+    position: absolute;
+    left: -20vw;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(91, 112, 131, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+.edit-profile-popup-box{
+    width: 38%;
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: black;
+    overflow-y: scroll;
+}
+.edit-profile-header{
+    position: fixed;
+    width: 38%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.734);
+    backdrop-filter: blur(10px);
+    border-radius: 20px 20px 0 0;
+}
+.edit-profile-cross-and-name{
+    display: flex;
+    gap: 20px;
+}
+.edit-profile-cross{
+    font-size: 15px;
+    margin-left: 15px;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-profile-cross:hover{
+    background-color: #3e4144;
+}
+.edit-profile-name-header{
+    font-size: 20px;
+    font-weight: 650;
+    color: rgb(215, 215, 215);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-profile-save{
+    margin-right: 20px;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.edit-profile-save-container{
+    height: 70%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: black;
+    justify-content: center;
+    width: 75px;
+    border-radius: 9999999999px;
+}
+.edit-profile-save-container:hover{
+    background-color: #3e4144;
+    color: white;
+    transition: 300ms;
+}
+.edit-profile-save-container:not(:hover){
+    background-color: white;
+    transition: 300ms;
+    color: black;
+}
+.edit-profile-save-container div{
+    margin-bottom: 0;
+    font-weight: 600;
+}
+.edit-profile-section{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.edit-profile-banner{
+    background-image: url("../images/twitter banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.edit-banner-icon{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.edit-banner-icon div{
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6e737758;
+    border-radius: 100%;
+}
+.edit-banner-icon div:hover{
+    background-color: #6e7377;
+    transition: 300ms;
+}
+.edit-banner-icon div:not(:hover){
+    transition: 300ms;
+}
+.edit-banner-icon div input{
+    display: none;
+}
+.edit-profile-pic{
+    position: relative;
+    margin-left: 30px;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-profile-pic .edit-profile-pic-image{
+    width: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 2px solid black;
+    background-color: #16181c;
+}
+.edit-pfp-icon{
+    position: absolute;
+    z-index: 15;
+}
+.edit-pfp-icon div{
+    width: 75px;
+    height: 75px;
+    background-color: #6e737798;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-pfp-icon div:hover{
+    transition: 300ms;
+    background-color: #6e7377;
+}
+.edit-pfp-icon div:not(:hover){
+    transition: 300ms;
+}
+.edit-pfp-icon div input{
+    display: none;
+}
+
+.edit-profile-content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.edit-profile-text{
+    width: 95%;
+    /* margin-left: 20px; */
+    margin-bottom: 20px;
+    /* margin-right: 20px; */
+}
+.edit-profile-name{
+    border: 1px solid #3e4144;
+    color: #3e4144;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.edit-profile-name div{
+    width: 95%;
+    font-size: 14px;
+    font-weight: 450;
+}
+.edit-profile-name textarea{
+    resize: none;
+    background-color: black;
+    width: 95%;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-family:   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.edit-username{
+    color: #6e7377;
+}
+.edit-date-of-joining{
+    color: #6e7377;
+}
+.edit-bio{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.edit-bio-text{
+    width: 95%;
+    margin-bottom: 20px;
+}
+.edit-bio-content{
+    border: 1px solid #3e4144;
+    color: #3e4144;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.edit-bio-content div{
+    width: 95%;
+    font-size: 14px;
+    font-weight: 450;
+}
+.edit-bio-content textarea{
+    resize: none;
+    background-color: black;
+    width: 95%;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-family:   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
