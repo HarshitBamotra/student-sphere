@@ -24,6 +24,7 @@ function App(){
                 <Route path={"/"} element={<Landing></Landing>}></Route>
             </Routes> :
                 <div className="entire-screen">
+                    
                     <Sidebar></Sidebar>
                     <MainContent></MainContent>
                 </div>

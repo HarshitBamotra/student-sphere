@@ -53,7 +53,7 @@ function LoginPage(){
                         <div className="inputBox">
                             <input type="email" required onChange={onChangeEmail} name="email"></input>
                             <span>Email</span>
-                            <i></i>
+                            <i></i> 
                         </div>
                         <div className="inputBox">
                             <input type="password" required onChange={onChangePassword} name="password"></input>

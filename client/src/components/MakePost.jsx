@@ -25,6 +25,7 @@ function MakePost(props) {
         let remove = document.getElementById("removeImage");
         remove.classList.remove("displayNone");
     }
+    
     const transformFile = (file) => {
         let reader = new FileReader();
         if (file) {
