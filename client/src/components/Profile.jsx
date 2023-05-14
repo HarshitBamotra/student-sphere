@@ -101,7 +101,7 @@ function Profile(props) {
 
 
     function saveProfile(){
-        
+
 
     }
 
@@ -198,7 +198,7 @@ function Profile(props) {
                             <div className='date-of-joining'>{"joined " + props.userDetail.dateOfJoining}</div>
                         </div>
                         <div className='edit-profile-container'>
-                            <div className='edit-profile' onClick={editProfile}>edit profile</div>
+                            <div className='edit-profile' onClick={editProfile} role='button'>edit profile</div>
                         </div>
                     </div>
                     <div className='bio'>This is Your Bio.</div>
