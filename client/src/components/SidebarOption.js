@@ -11,8 +11,9 @@ export default function SidebarOption({ active, text, Icon, path }) {
                         style={({ isActive }) => {
                             return isActive ? { color: "#0096ff" } : { color: "#fff" }
                         }}
-                        to={path}>
+                        to={path} className="something">
                         <Icon />
+                        
                     </NavLink>
                 </Tooltip>
             </IconButton>

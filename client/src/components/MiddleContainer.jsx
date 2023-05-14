@@ -39,7 +39,6 @@ function MiddleContainer() {
         }
         fetchData();
     },[check]);
-
     const location = useLocation();
     let result = location.pathname.includes("explore");
     if(check===-1){

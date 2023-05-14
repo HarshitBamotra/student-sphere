@@ -177,6 +177,7 @@
     background-color: #3e4144;
     color: white;
     transition: 300ms;
+    cursor: pointer;
 }
 .edit-profile-save-container:not(:hover){
     background-color: white;
@@ -216,7 +217,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #6e737758;
+    background-color: #6e737798;
     border-radius: 100%;
 }
 .edit-banner-icon div:hover{
@@ -350,4 +351,5 @@
     font-size: 18px;
     margin-bottom: 5px;
     font-family:   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    white-space: pre-wrap;
 }

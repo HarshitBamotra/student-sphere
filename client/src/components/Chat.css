@@ -26,7 +26,7 @@
   /* background-color: #474b53; */
   background-color: #262626;
 }
-.chat__input > form > input {
+.chat__input > form > input{
   margin: 0;
   padding: 10px;
   background: transparent;

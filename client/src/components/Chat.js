@@ -149,7 +149,7 @@ function Chat() {
                                 <PollIcon color="primary" />Poll</MenuItem>
                         </Menu>
                     </div>
-                    <form onSubmit={handleSubmitMessage}>
+                    <form onSubmit={handleSubmitMessage} autoComplete='off'>
                         <input placeholder={`Message #TESTCHANNEL`} onChange={onChangeMessage} id='chat-input-textarea' />
                         <button className='chat__inputButton' type='submit'> Send Message</button>
                     </form>
