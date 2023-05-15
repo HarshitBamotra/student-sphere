@@ -113,12 +113,14 @@ app.post("/imageUpload", async function (req, res) {
                 imageName: {url:""}
             });
             const savedPost = await newPost.save();
-            Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).
+            await Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).
                 then(
                     () => {
                         console.log("posts updated");
                     }
                 )
+            const updatedUser = await Register.findOne({username:req.body.username});
+            userDetail=updatedUser;
         }
         else if (req.body.imageName) {
             const uploadRes = await cloudinary.uploader.upload(req.body.imageName, {
@@ -137,11 +139,13 @@ app.post("/imageUpload", async function (req, res) {
                     });
                     const savedPost = await newPost.save();
                     
-                    Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).then(
+                    await Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).then(
                         () => {
                             console.log("posts updated");
                         }
                     );
+                    const updatedUser = await Register.findOne({username:req.body.username});
+                    userDetail=updatedUser;
                 }
                 else {
                     const newPost = new Post({
@@ -153,11 +157,13 @@ app.post("/imageUpload", async function (req, res) {
                     });
                     const savedPost = await newPost.save();
                     
-                    Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).then(
+                    await Register.findOneAndUpdate({username: req.body.username }, { $push: { posts: newPost } }).then(
                         () => {
                             console.log("posts updated");
                         }
                     );
+                    const updatedUser = await Register.findOne({username:req.body.username});
+                    userDetail=updatedUser;
                 }
             }
         }
@@ -246,9 +252,9 @@ app.post("/updateProfileImage", async (req, res) => {
             const uploadRes = await cloudinary.uploader.upload(req.body.profileImage, {
                 upload_preset: "student-sphere-profile"
             });
-            const updatedUser=await Register.findOneAndUpdate({username: req.body.username}, {profileImage: uploadRes});
+            await Register.findOneAndUpdate({username: req.body.username}, {profileImage: uploadRes});
+            const updatedUser = await Register.findOne({username:req.body.username});
             userDetail=updatedUser;
-            userDetail.profileImage.url=uploadRes.url;
             // to update profile image for rest of the post of a user
             await Post.updateMany({postUsername: req.body.username}, {postUserProfile: uploadRes});
             await Chat.updateMany({username: req.body.username}, {userProfileImage: uploadRes});
@@ -264,12 +270,14 @@ app.post("/updateCover", async (req, res) => {
             const uploadRes = await cloudinary.uploader.upload(req.body.coverImage, {
                 upload_preset: "student-sphere-cover"
             });
-            Register.findOneAndUpdate({username: req.body.username}, {coverImage: uploadRes}).then(
-                (updatedUser) => {
-                    userDetail=updatedUser;
-                    userDetail.coverImage.url=uploadRes.url; 
+            await Register.findOneAndUpdate({username: req.body.username}, {coverImage: uploadRes}).then(
+                () => {
+                    console.log("cover image updated");
                 }
             )
+            const updatedUser = await Register.findOne({username:req.body.username});
+            userDetail=updatedUser;
+
         } 
     } catch(error){
         console.log(error);
@@ -279,10 +287,12 @@ app.post("/updateCover", async (req, res) => {
 app.post("/updateBio", async (req, res) => {
     try{
         await Register.findOneAndUpdate({username: req.body.username}, {bio: req.body.bio}).then(
-            (updatedUser) => {
-                userDetail=updatedUser;
+            () => {
+                console.log("bio updated")
             }
         );
+        const updatedUser = await Register.findOne({username:req.body.username});
+            userDetail=updatedUser;
     } catch(error){
         console.log(error);
     }
@@ -290,10 +300,12 @@ app.post("/updateBio", async (req, res) => {
 app.post("/updateFirstName", async (req, res) => {
     try{
         await Register.findOneAndUpdate({username: req.body.username}, {firstName: req.body.firstName}).then(
-            (updatedUser) => {
-                userDetail=updatedUser;
+            () => {
+                console.log("first name updated");
             }
         );
+        const updatedUser = await Register.findOne({username:req.body.username});
+        userDetail=updatedUser;
     } catch(error){
         console.log(error);
     }
@@ -301,10 +313,12 @@ app.post("/updateFirstName", async (req, res) => {
 app.post("/updateLastName", async (req, res) => {
     try{
         await Register.findOneAndUpdate({username: req.body.username}, {lastName: req.body.lastName}).then(
-            (updatedUser) => {
-                userDetail=updatedUser;
+            () => {
+                console.log("last name updated");
             }
         );
+        const updatedUser = await Register.findOne({username:req.body.username});
+        userDetail=updatedUser;
     } catch(error){
         console.log(error);
     }

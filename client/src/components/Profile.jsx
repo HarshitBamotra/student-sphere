@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import "./Profile.css";
 import camera from '../images/icons8-camera-50.png';
 import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+import Activity from './Activity';
 // import testPfp from '../images/Untitled.jpg'
 function Profile(props) {
+
+    const userPosts = props.userDetail.posts;
+
     function editProfile() {
         document.getElementById("edit-profile-popup").style.display = "flex";
         document.getElementById('first-name-textarea').defaultValue = `${props.userDetail.firstName}`;
@@ -192,6 +197,14 @@ function Profile(props) {
         setPfpImage("");
         setBannerImage("");
     }
+
+
+
+    function createActivity(post){
+        return(
+            <Activity key={post._id} caption={post.caption} postImage={post.imageName.url} username={post.postUsername} pfp={props.userDetail.profileImage.url} timestamp={post.timestamp}></Activity>
+        )
+    }
     return (
         <div className='profile'>
             <div className='edit-profile-popup-container' id='edit-profile-popup'>
@@ -294,6 +307,7 @@ function Profile(props) {
                         <div className='your-activity-text'>Media</div>
                         <div className='your-activity-text'>Likes</div>
                     </div>
+                    {userPosts.slice(0).reverse().map(createActivity)}
                 </div>
             </div>
         </div>
