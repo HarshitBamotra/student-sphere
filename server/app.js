@@ -232,6 +232,7 @@ app.get("/postDetails", async (req, res) => {
 // deleteing a post 
 
 app.post("/deletePost", async (req, res) => {
+    console.log(req.body);
     try{
         await Post.findOneAndDelete({_id: req.body.postId}).then(
             () =>{

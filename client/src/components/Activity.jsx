@@ -11,10 +11,17 @@ import axios from "axios";
 function Activity(props){
 
     async function deletePost(){
-        const idObject={
-            id:props._id
+        const postObject={
+            id:props._id,
+            username:props.username
         }
-        axios.post("http://localhost:5000/deletePost");
+        axios.post("http://localhost:5000/deletePost",postObject)
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
     }
 
 
