@@ -202,7 +202,7 @@ function Profile(props) {
 
     function createActivity(post){
         return(
-            <Activity key={post._id} caption={post.caption} postImage={post.imageName.url} username={post.postUsername} pfp={props.userDetail.profileImage.url} timestamp={post.timestamp} postId={props._id}></Activity>
+            <Activity key={post._id} caption={post.caption} postImage={post.imageName.url} username={post.postUsername} pfp={props.userDetail.profileImage.url} timestamp={post.timestamp} postId={post._id}></Activity>
         )
     }
     return (
