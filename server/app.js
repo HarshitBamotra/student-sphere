@@ -238,6 +238,12 @@ app.post("/deletePost", async (req, res) => {
                 console.log("post has been deleted ");
             }
         )
+
+        await Register.findOneAndUpdate({username: req.body.username}, {$pull: {posts: {_id: req.body.postId}}}).then(
+            () => {
+                console.log("post also deleted from user schema");
+            }
+        )
     } catch(error){
         console.log(error);
     }
