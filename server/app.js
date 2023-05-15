@@ -234,17 +234,13 @@ app.get("/postDetails", async (req, res) => {
 app.post("/deletePost", async (req, res) => {
     console.log(req.body);
     try{
-        await Post.findOneAndDelete({_id: req.body.id}).then(
-            () =>{
-                console.log("post has been deleted ");
-            }
-        )
+        const currentPost = await Post.findOneAndDelete({_id: req.body.id})
+        
+        await Register.findOneAndUpdate({username: req.body.username}, {$pull: {posts: currentPost}});
 
-        await Register.findOneAndUpdate({username: req.body.username}, {$pull: {posts: {_id: req.body.id}}}).then(
-            () => {
-                console.log("post also deleted from user schema");
-            }
-        )
+        const updatedUser = await Register.findOne({username: req.body.username});
+        userDetail = updatedUser;
+        
     } catch(error){
         console.log(error);
     }
