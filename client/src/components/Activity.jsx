@@ -29,6 +29,15 @@ function Activity(props){
 
     return(
         <>
+        <div className="delete-popup-container">
+            <div className="delete-popup-box">
+                <div className="delete-popup-content">Are you sure you want to delete this post?</div>
+                <div className="delete-popup-buttons">
+                    <div className="delete-yes">Yes</div>
+                    <div className="delete-no">No</div>
+                </div>
+            </div>
+        </div>
         <div className="activity-forYouElement">    {/* display flex */}
             <div className="activity-forYouBox">
                 <div className="activity-pfp">

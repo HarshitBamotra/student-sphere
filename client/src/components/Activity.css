@@ -127,3 +127,12 @@
 .activity-share img{
     width: 23px;
 }
+.delete-popup-container{
+    display: none;
+    position: absolute;
+    background-color: rgba(91, 112, 131, 0.4);
+    width: 100vw;
+    height: 100vh;
+    left: -20vw;
+    top: 0;
+}
