@@ -25,16 +25,21 @@ function Activity(props){
         })
     }
 
-
+    function close(){
+        document.getElementById("delete-popup").style.display="none";
+    }
+    function openPopup(){
+        document.getElementById("delete-popup").style.display="flex";
+    }
 
     return(
         <>
-        <div className="delete-popup-container">
+        <div className="delete-popup-container"id="delete-popup" onClick={close}>
             <div className="delete-popup-box">
-                <div className="delete-popup-content">Are you sure you want to delete this post?</div>
+                <div className="delete-popup-content">Are you sure you want to <span>delete</span> this post?</div>
                 <div className="delete-popup-buttons">
-                    <div className="delete-yes">Yes</div>
-                    <div className="delete-no">No</div>
+                    <div className="delete-yes" onClick={deletePost}>Yes</div>
+                    <div className="delete-no" onClick={close}>No</div>
                 </div>
             </div>
         </div>
@@ -50,7 +55,7 @@ function Activity(props){
                             <div className="activity-time">{props.timestamp}</div>
                         </div>
                         <div className="activity-delete-container">
-                            <div className="activity-delete" onClick={deletePost}>
+                            <div className="activity-delete" onClick={openPopup}>
                                 <img src={deleteWhite} alt="" id="delete-red-icon"></img>
                             </div>
                         </div>
