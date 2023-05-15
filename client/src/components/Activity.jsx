@@ -8,8 +8,10 @@ import deleteWhite from "../images/delete-white.png";
 // import deleteRed from "../images/delete-red.png";
 import "./Activity.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Activity(props){
 
+    const navigate = useNavigate();
     async function deletePost(){
         console.log(props);
         const postObject={
@@ -23,6 +25,8 @@ function Activity(props){
         .catch((error)=>{
             console.log(error);
         })
+        close();
+        navigate("/profile/"+props.userId);
     }
 
     function close(){
@@ -34,7 +38,7 @@ function Activity(props){
 
     return(
         <>
-        <div className="delete-popup-container"id="delete-popup" onClick={close}>
+        <div className="delete-popup-container"id="delete-popup">
             <div className="delete-popup-box">
                 <div className="delete-popup-content">Are you sure you want to <span>delete</span> this post?</div>
                 <div className="delete-popup-buttons">

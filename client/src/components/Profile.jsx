@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import "./Profile.css";
 import camera from '../images/icons8-camera-50.png';
 import axios from 'axios';
+import back from "../images/back-icon.png";
 // import { Route, Routes } from 'react-router-dom';
 import Activity from './Activity';
+import {useNavigate} from "react-router-dom";
 // import testPfp from '../images/Untitled.jpg'
 function Profile(props) {
-
+    const navigate = useNavigate();
     const userPosts = props.userDetail.posts;
 
     function editProfile() {
@@ -198,11 +200,14 @@ function Profile(props) {
         setBannerImage("");
     }
 
+    function backButton(){
+        navigate("/explore/forYou");
+    }
 
 
     function createActivity(post){
         return(
-            <Activity key={post._id} caption={post.caption} postImage={post.imageName.url} username={post.postUsername} pfp={props.userDetail.profileImage.url} timestamp={post.timestamp} postId={post._id}></Activity>
+            <Activity key={post._id} caption={post.caption} postImage={post.imageName.url} username={post.postUsername} pfp={props.userDetail.profileImage.url} timestamp={post.timestamp} postId={post._id} userId={props.userDetail._id}></Activity>
         )
     }
     return (
@@ -277,8 +282,8 @@ function Profile(props) {
             </div>
 
             <div className='topBar'>
-                <div className='back'>
-                    2---
+                <div className='back' onClick={backButton}>
+                    <img src={back} alt='' ></img>
                 </div>
                 <div className='name'>
                     {props.userDetail.firstName + " " + props.userDetail.lastName}

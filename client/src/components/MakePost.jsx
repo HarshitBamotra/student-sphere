@@ -9,7 +9,7 @@ import emoji from "../images/emoji.svg"
 import xImage from "../images/x.png";
 import axios from 'axios'
 
-function MakePost(props) {
+function MakePost(props) { 
     // console.log(props.userDetail);
     // const id = props.userDetail._id;
     const [caption, setCaption] = useState("");

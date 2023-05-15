@@ -66,11 +66,18 @@
     justify-content: space-between;
     padding-bottom: 20px;
 }
+.input-types{
+    display: flex;
+    align-items: center;
+}
 .image-upload input{
     display: none;
 }
 .image-icon{
     width: 30px;
+}
+.image-icon:hover{
+    cursor: pointer;
 }
 .gif-upload{
     display: flex;
@@ -106,4 +113,16 @@
 .image-input .input-types{
     display: flex;
     gap: 25px;
+}
+.submit-button button{
+    border: none;
+    border-radius: 999999999999999px;
+    outline: none;
+    background-color: #1d9bf0;
+    font-size: 16px;
+    padding: 5px 10px 5px 10px;
+    color: rgb(23, 23, 23);
+}
+.submit-button button:hover{
+    cursor: pointer;
 }
