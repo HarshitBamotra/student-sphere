@@ -11,7 +11,7 @@ export default function Message(props) {
                     {props.username}
                     <span className="message__timestamp">{props.timestamp}</span>
                 </h4>
-                <p className='actual__message'>{props.message}</p>
+                <p className='actual__message' style={{whiteSpace:"pre-wrap"}}>{props.message}</p>
             </div>
         </div>
     )
