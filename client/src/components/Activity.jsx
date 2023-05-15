@@ -2,10 +2,10 @@ import React from "react";
 import like from "../images/like.svg"
 import comment from "../images/comment.svg"
 import share from "../images/Share.svg"
-import testpfp from "../images/Untitled.jpg"
-import test from "../images/Screenshot (643).png";
+// import testpfp from "../images/Untitled.jpg"
+// import test from "../images/Screenshot (643).png";
 import deleteWhite from "../images/delete-white.png";
-import deleteRed from "../images/delete-red.png";
+// import deleteRed from "../images/delete-red.png";
 import "./Activity.css";
 import axios from "axios";
 function Activity(props){
