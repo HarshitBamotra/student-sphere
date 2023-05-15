@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Profile.css";
 import camera from '../images/icons8-camera-50.png';
 import axios from 'axios';
-import { Route, Routes } from 'react-router-dom';
+// import { Route, Routes } from 'react-router-dom';
 import Activity from './Activity';
 // import testPfp from '../images/Untitled.jpg'
 function Profile(props) {
