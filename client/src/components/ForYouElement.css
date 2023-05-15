@@ -8,7 +8,9 @@
     width: 90%;
     margin: 30px auto 30px 10px;
 } 
-
+.forYouBox:hover{
+    cursor: pointer;
+}
 .pfp{
     flex: 0.1;
     height: 100%;

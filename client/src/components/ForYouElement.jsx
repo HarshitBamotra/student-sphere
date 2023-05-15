@@ -32,6 +32,7 @@ function ForYouElement(props) {
                 console.log(error)
             });
     }
+
     return (
         <div className="forYouElement">    {/* display flex */}
             <div className="forYouBox" onClick={handleClick}>
@@ -46,7 +47,8 @@ function ForYouElement(props) {
                     <div className="content1">
                         <div className="contentText">{props.caption}</div>
                         <div className="contentImage">
-                            <img src={props.postImage} alt=""></img>
+                            {props.postImage?<img src={props.postImage} alt=""></img>:<></>}
+                            {/* <img src={props.postImage?props.postImage:<></>} alt=""></img> */}
                         </div>
                     </div>
                     <div className="likeAndShare">    {/* display flex */}
