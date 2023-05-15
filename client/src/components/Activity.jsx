@@ -7,15 +7,16 @@ import test from "../images/Screenshot (643).png";
 import deleteWhite from "../images/delete-white.png";
 import deleteRed from "../images/delete-red.png";
 import "./Activity.css";
+import axios from "axios";
 function Activity(props){
-    function changeIconRed(){
-        document.getElementById("delete-white-icon").style.display="none";
-        document.getElementById("delete-red-icon").style.display="block";
+
+    async function deletePost(){
+        const idObject={
+            id:props._id
+        }
+        axios.post("http://localhost:5000/deletePost");
     }
-    function changeIconWhite(){
-        document.getElementById("delete-white-icon").style.display="block";
-        document.getElementById("delete-red-icon").style.display="none";
-    }
+
 
 
     return(
@@ -32,9 +33,8 @@ function Activity(props){
                             <div className="activity-time">{props.timestamp}</div>
                         </div>
                         <div className="activity-delete-container">
-                            <div className="activity-delete" onMouseOver={changeIconRed} onMouseLeave={changeIconWhite}>
-                                <img src={deleteWhite} alt="" id="delete-white-icon"></img>
-                                <img src={deleteRed} alt="" id="delete-red-icon" style={{display:"none"}}></img>
+                            <div className="activity-delete" onClick={deletePost}>
+                                <img src={deleteWhite} alt="" id="delete-red-icon"></img>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,8 @@ function Activity(props){
                             {props.caption}
                         </div>
                         <div className="activity-contentImage">
-                            <img src={props.postImage} alt=""></img>
+                            {/* <img src={props.postImage} alt="" ></img> */}
+                            {props.postImage?<img src={props.postImage} alt=""></img>:<></>}
                         </div>
                     </div>
                     <div className="activity-likeAndShare">    {/* display flex */}
@@ -60,7 +61,6 @@ function Activity(props){
                 </div>
             </div>
         </div>
-        
         </>
     )
 }
