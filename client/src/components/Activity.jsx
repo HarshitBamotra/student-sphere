@@ -25,7 +25,6 @@ function Activity(props){
         .catch((error)=>{
             console.log(error);
         })
-        close();
         navigate("/profile/"+props.userId);
     }
 
@@ -59,7 +58,7 @@ function Activity(props){
                             <div className="activity-time">{props.timestamp}</div>
                         </div>
                         <div className="activity-delete-container">
-                            <div className="activity-delete" onClick={openPopup}>
+                            <div className="activity-delete" onClick={deletePost}>
                                 <img src={deleteWhite} alt="" id="delete-red-icon"></img>
                             </div>
                         </div>
